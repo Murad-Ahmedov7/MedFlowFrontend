@@ -216,7 +216,6 @@ export default function App() {
 
 
 
-
 //umumi butun extensionlara bax.
 
 //global tailwind ne edim
@@ -229,9 +228,22 @@ export default function App() {
 
 //claude code ve codex yoxla
 
+//kiber,sebeke,ai haqqinda en azi temel bilgeler oyren. ve komp xususiyleri haqqinda da.islemek ucun komp magazisinda
+
+//agiz,goz,urek dermanlari,suaya qarsi acqi al ve nurlan muellimden endpoint adlandirmalarini sorus.
+
+
+// [Authorize] burada backende role var. eger commit olunmamis olsa, onda notbukda  bunu bele edib yaz
+// [HttpPost("sign-up")]
+
+ // Untitled.txt bax desktopda
+
+ //kod paylasmadan elave github readme ve qoy ve islemesini sekil ve videsounu da 
 
 
 //#endregion
+
+// https://www.youtube.com/watch?v=R7b3OlEyqug
 
 
 

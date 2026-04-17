@@ -1,20 +1,23 @@
 
 import { Outlet } from "react-router-dom";
+import SideBar from "../components/sidebar/Sidebar";
 
 export default function MainLayout() {
   return (
-    <div>
-      <header>
+    <div className="flex">
+      <SideBar/>
+
+      {/* <header>
         <h1>My App</h1>
-      </header>
+      </header> */}
 
       <main>
         <Outlet />
       </main>
 
-      <footer>
+      {/* <footer>
         <p>Footer</p>
-      </footer>
+      </footer> */}
     </div>
   );
 }

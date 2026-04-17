@@ -80,6 +80,8 @@ apiClient.interceptors.response.use(
 );
 
 
+//interceptor tekce 401 yox 403 ve s digelri ile de et
+
 // 1. Request interceptor  → request getməmişdən əvvəl
 // 2. Response interceptor → cavab gələndən sonra
 
@@ -99,6 +101,7 @@ apiClient.interceptors.response.use(
 //then catch ile try catch ferqi ve burda yaz
 
 //ve butun errolar hallarini backenden gotur
+
 
 
 

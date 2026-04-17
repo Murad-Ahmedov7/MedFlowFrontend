@@ -1,9 +1,12 @@
 import { useSignIn } from "./useSignIn";
 import type { SignInRequest } from "../types/auth.types";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 export const useSignInForm = () => {
   const { handleSignIn, loading } = useSignIn();
+
+  const navigate=useNavigate();
 
   const {
     register,
@@ -19,7 +22,7 @@ export const useSignInForm = () => {
       await handleSignIn(data);
       console.log("FORM: 2. SUCCESS bitdi");
       alert("You have successfully signed in.");
-      reset();
+      navigate("/departments");
     } catch (err: any) {
       console.log("FORM: 3. CATCH işlədi");
       console.log("FORM ERROR:", err.message);
