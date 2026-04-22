@@ -11,7 +11,7 @@ export default function MainLayout() {
         <h1>My App</h1>
       </header> */}
 
-      <main>
+      <main className="w-[90%] p-10 bg-gray-300/40   min-h-screen ">
         <Outlet />
       </main>
 

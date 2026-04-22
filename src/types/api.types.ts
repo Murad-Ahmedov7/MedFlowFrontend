@@ -1,7 +1,15 @@
-export interface ApiResponse<T> {
-  data: T;
+export interface BaseResponse {
   isSuccess: boolean;
   errors: string[] | null;
+}
+
+export interface ApiResponse<T> extends BaseResponse {
+  data: T;
+}
+
+export interface PaginatedResponse<T> extends BaseResponse {
+  data: T[];
+  totalCount: number;
 }
 
 export interface ApiError {

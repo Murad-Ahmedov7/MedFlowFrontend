@@ -214,6 +214,11 @@ export default function App() {
 // https://www.youtube.com/watch?v=QY2Sj7-MMgM
 
 
+//implicit explicit return oyren.
+
+//navlink nedir arasdir.
+
+
 
 
 //umumi butun extensionlara bax.
@@ -271,9 +276,292 @@ export default function App() {
 
 //taiwlind sirasni auto eden bir sey var onu tap insta ve ya hardansa(headwind isledim?) ve taiwlind docs yukledim ona bax
 
+//bu yeni vite+react logosudur? kohne projlar ile muqayise et
+
+
+//export excel de yaz importda yaz
+
+//linkediinde ve ya youtbuba paylas kodu
+
+//burger menu duzelt animation  ile
+
+//gomruk saytidan mantine ve dizanyiu gotur
+
+//language theme(dark mode ve lighy mode)
+
+//sidebara logout yaz
+
+// //jwt decode islet yoxsa local storageden goturum(role goturmek ucun)
+
+
+//key tap olaraq neya lazimdir arasdir
+
 //#endregion
 
 
+//Departments edilecekkkkkkkkkkk
+
+// 🔹 Commit / Git
+
+//backendei de commmit et
+//commite sidebari da duzeltdim yaz 
+
+// 🔹 Type / Kod istifadəsi
+//type harda isledim?
+
+
+// 🔹 UI / Dizayn
+
+//burada buttonlari react icons et
+
+// https://dribbble.com/shots/26015651-Medicare-Dashboard-Clinic-Management-Patient-Page
+
+// https://dribbble.com/shots/27169581-DentalPro-Patient-Management-Dashboard-UIUX
+
+// https://dribbble.com/shots/21217373-Medical-Admin-Dashboard-Wecare
+
+//umumi dizayn bax gorek ne eksidir
+
+
+// 🔹 Audit / View məsələsi
+
+//muellimden sorus ki view-a basanda auditler gorunsun yoxsa nece olsun(auditler yeni created at created by updated at isDeleted ve s. Eger lazimdisrsa onlar kod mentiqe basdan bax tpyes ,servces ves.)
+
+
+// 🔹 CRUD / Backend-Frontend
+
+
+//update ucun updated at qoy hem back hem front
+
+//delete yaz ve creadt at creadt by goster cedvelde ve created at-i duzelt ve updated at elave et
+
+//fronta ve backende crud sirasi nece olmaldir bax.
+
+//delete edende cox fikir ver neye baglidir ve ya onCascade islet backende d
+
+
+
+
+// 🔹 Console / Debug
+
+//console.loglari try cactchlerde numune ki ancaq authda saxla. ama consolo loglari digerlinde saxla kodu co
+
+
+
+// 🔹 AI istifadəsi
+//ai-i nece duzgun isledim?
+
+
+// 🔹 Try / Catch / Error Handling
+
+
+//get metdolari ve delete ucun niyese try catch yazmadim.
+
+//helelik hemise signupda olan serviceden try catch gotur.(eger coxsu ele olursa bir global bir sey yazib onu islet .)
+
+
+// ✔ catch + throw → manual ötürmə
+// ✔ try + finally → avtomatik ötürmə bunu arsadir
+
+//propgate nedir 
+
+
+// ✅ catch yazma
+// heç nə etməyəcəksənsə
+// sadəcə propagate lazımdır
+// try {
+  // await apiCall();
+// } finally {
+  // setLoading(false);
+// }
+
+
+// 🔹 TanStack Query
+
+//tanstack query islet bu task bitenden sonra/
+
+//tanstack query isloadin error ile useFormda isLoading error
+
+
+
+// 🔹 Null / Undefined
+//null undefined ? bu frontend ve backend
+
+
+// 🔹 React / Hook qaydaları
+
+// 4. React qaydası (sərt)
+
+// 👉 useEffect içində istifadə etdiyin dəyişən → dependency-də olmalıdır
+
+// Səndə:
+
+// getDepartmentById(id)
+
+// ➡️ deməli:
+
+// [id] niye depencady id olmadan da isledi axi
+
+
+
+// 🔹 Struktur / Arxitektura
+
+//hookdlara bol yeni logic ile ui-i hansiki demsiem ki lazim olsa bolll
+
+//kodun umumi strukturuna bax commnetler ile
+
+//burdaki kodlari basa dus.
+
+
+
+
+
+// 🔹 Return məsələsi
+
+//burada bezilerinde return yazmsaq ne olar ve delete-de niye yazmadiq?
+
+
+//umumi returnlari ona gore lazimdir ki eger deyerin isledecemse onda return et 
+
+
+// 🔹 Form / useForm
+
+
+//useForm islet ve try cathcler console loglari ve tanstack query islet
+
+
+//useSignUpFormda useForm ve try catchi gotur.
+
+
+// 🔹 Ümumi yoxlamalar
+
+
+//try catchlere bax hamisinda
+
+//ve error tutmalarda console log ve errolara fikir ve add ucun
+
+
+//ilk sorgu edim yoxsa ui sonra sorgu fikirles.
+
+
+
+// 🔹 Bonus
+
+
+// 🔥 Bonus (optional amma yaxşı) Button disable edə bilərsən loading zamanı (amma bu artıq next step-dir) nece yeni delete ve digerleri ucun
+
+
+// add button var table-da hem de sidebarda subMenu duzdu?
+
+
+
+
+
+// 🔹 Bonus 2
+
+
+//route mende muasdirdi?
+
+
+//try catch sifginrdan oyren hem kohn eaxios olmadan usul ile hem axios ile
+
+
+//butun backend fronta error handling i sifirdan duzelt.
+
+
+//get metodlari ucun try catach ehityac yoxdur? ve try catchlere bax bu deparmentsde console loglar ile bir
+
+//burdaki kodlari basa dus.
+
+
+//json igonre sorus muellimden
+
+//view basandsa audit gorunusN?
+
+//TanStackQuery yaz mutleqqqq
+
+//useForm yaz ve kodu tam analiz et her terefli
+
+
+//zod islet ve lazim olsa bu fayli ayir.
+
+//try catchleri butun kodda duzelt(yeni department hisseinde duzelt)
+
+
+//bu tekrralan iki div var e dizaynda onu duzelt(global etmek lazimdirsa)
+
+    // <div className="min-h-screen bg-gray-100 py-10 px-0">
+    //   <div className="w-[95%] max-w-none mx-auto bg-white shadow-md rounded-lg p-6"></div>
+    //   </div>
+
+
+    
+//tablein dizayni dagildi. responsivliyi duzelt.
+
+
+
+//ne vxt export funciton ne vaxt ananoyumus yazim?
+
+//api cagiranda ve ya try catchde bu console loglari yigisdir.
+
+//muellimden josn ignore yerine ne yazim onu sorus.
+
+//endpointde olan requestr responslari yoxla ki hamisin isletdik?
+
+//maplerde index yox id yaz butun kodda et
+
+
+
+// | layer     | nə edir        |
+// | --------- | -------------- |
+// | Component | UI + event     |
+// | Page      | business logic |
+// | Hook      | state + API    |
+
+
+
+// 🧠 DÜZGÜN BÖLGÜ
+// 🟢 1. components
+// UI + event (click, input və s.)
+
+// ✔ button
+// ✔ input
+// ✔ table
+
+// 🔵 2. hooks (əsas logic burada olmalıdır)
+// state + API + əsas logic
+
+// ✔ fetch
+// ✔ add / update / delete
+// ✔ loading
+
+// 🟡 3. pages
+// orchestration (idarəetmə)
+
+// 👉 nə edir:
+
+// hook çağırır
+// event-ləri bağlayır
+
+ //bes digerleri ne edir ona da bax.
+
+
+ //delete ucun de loading erorr yaz alert ve ya confirm olmasin. toast ve s olsun.
+
+ //hansi departmentler olacaq mueyyen et .
+
+
+
+ //isDeleted olanda db-de ve uida nece bilinsin ki eynisin de artiq bir dene var.
+
+
+ //Departments aid Pagelerde niye hook yazmadim(yeni logic var ve hem de ui)?
+
+
+
+
+
+//Departments edilecekkkkkkkkkkk
 
 
 

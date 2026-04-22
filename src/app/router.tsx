@@ -3,10 +3,12 @@ import AuthLayout from "@/layouts/AuthLayout";
 import SignInPage from "@/pages/auth/sign-in/SignInPage";
 import SignUpPage from "@/pages/auth/sign-up/SignUpPage";
 import MainLayout from "@/layouts/MainLayout";
-import DepartmentsPage from "@/pages/DepartmentsPage";
+import DepartmentsPage from "@/pages/departments/DepartmentsPage";
 import NotFoundPage from "@/pages/NotFoundPage";
 import ProtectedLayout from "@/layouts/ProtectedLayout";
 import ForbiddenPage from "@/pages/ForbiddenPage";
+import UpdateDepartmentPage from "@/pages/departments/edit/UpdateDepartmentPage";
+import AddDepartmentPage from "@/pages/departments/new/AddDepartmentPage";
 
 export const router = createBrowserRouter([
   {
@@ -24,19 +26,27 @@ export const router = createBrowserRouter([
 
 
 
-  {
-    element: <ProtectedLayout />,
-    children: [
-      {
-        path: "/",
-        element: <MainLayout />,
-        children: [
-          { index: true, element: <Navigate to="/departments" /> },
-          { path: "/departments", element: <DepartmentsPage /> },
-        ],
-      },
-    ],
-  },
+{
+  element: <ProtectedLayout />,
+  children: [
+    {
+      path: "/",
+      element: <MainLayout />,
+      children: [
+        { index: true, element: <Navigate to="/departments" /> },
+
+        {
+          path: "/departments",
+          children: [
+            { index: true, element: <DepartmentsPage /> },
+            { path: "new", element: <AddDepartmentPage /> },
+            { path: "edit/:id", element: <UpdateDepartmentPage /> }, 
+          ],
+        },
+      ],
+    },
+  ],
+},
 
     // ⛔ FORBIDDEN (403)
   {

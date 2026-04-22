@@ -37,3 +37,5 @@ export default function NotFoundPage() {
 }
 
 //duzelt burada  to hissesini
+
+//token ucun useState isledim?
