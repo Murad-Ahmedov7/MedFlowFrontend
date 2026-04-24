@@ -1,9 +1,11 @@
 import DepartmentsTable from "@/features/departments/components/DepartmentsTable";
 import useDepartments from "@/features/departments/hooks/useDepartments";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
 export default function DepartmentsPage() {
   const { departments, deleteDepartmentById } = useDepartments();
+  const { t } = useTranslation();
 
   const handleDelete = async (id: string, name: string) => {
     const confirmed = confirm(
@@ -28,7 +30,7 @@ export default function DepartmentsPage() {
             to="/departments/new"
             className="bg-blue-500 text-white px-4 py-3 rounded-lg text-sm hover:bg-blue-600"
           >
-            + Add Department
+            + {t("departments.add")}
           </Link>
         </div>
 

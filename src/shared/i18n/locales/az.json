@@ -1,0 +1,34 @@
+{
+  "app": {
+    "name": "MedFlow",
+    "subtitle": "Səhiyyə İdarəetmə Sistemi"
+  },
+  "menu": {
+    "title": "MENYU"
+  },
+  "departments": {
+    "title": "Şöbələr",
+    "add": "Şöbə əlavə et",
+    "edit": "Şöbəni redaktə et",
+    "updated": "\"{{name}}\" şöbəsi uğurla yeniləndi.",
+    "name": "Şöbə adı",
+    "namePlaceholder": "Şöbə adını daxil edin",
+    "id": "ID",
+    "empty": "Heç bir şöbə mövcud deyil"
+  },
+  "common": {
+    "delete": "Sil",
+    "edit": "Düzəliş et",
+    "view": "Bax",
+    "save": "Yadda saxla",
+    "cancel": "Ləğv et",
+    "update": "Yenilə",
+    "updating": "Yenilənir..."
+  },
+  "errors": {
+    "required": "Ad mütləqdir",
+    "loadFailed": "Məlumat yüklənə bilmədi",
+    "updateFailed": "Yeniləmə uğursuz oldu",
+    "invalidId": "Yanlış şöbə ID-si"
+  }
+}

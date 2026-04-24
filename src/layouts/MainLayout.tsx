@@ -1,25 +1,30 @@
 
 import { Outlet } from "react-router-dom";
-import SideBar from "../components/sidebar/Sidebar";
+import SideBar from "../components/Sidebar";
+import { Navbar } from "@/components/Navbar";
+
+
 
 export default function MainLayout() {
   return (
-    <div className="flex">
-      <SideBar/>
+    <div className="flex min-h-screen">
+      {/* Sidebar */}
+      <SideBar />
 
-      {/* <header>
-        <h1>My App</h1>
-      </header> */}
+      {/* Right side */}
+      <div className="flex flex-col w-full">
+        {/* Navbar */}
+        <Navbar />
 
-      <main className="w-[90%] p-10 bg-gray-300/40   min-h-screen ">
-        <Outlet />
-      </main>
-
-      {/* <footer>
-        <p>Footer</p>
-      </footer> */}
+        {/* Content */}
+        <main className="flex-1 p-10 bg-gray-300/40">
+          <Outlet />
+        </main>
+      </div>
     </div>
-  );
+  )
 }
+
+
 
 //bu helelik numune ucun yazilib duzelt bunu gelecekde

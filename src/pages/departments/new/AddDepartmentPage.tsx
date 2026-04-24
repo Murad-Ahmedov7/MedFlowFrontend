@@ -1,11 +1,10 @@
-
-
 import useDepartments from "@/features/departments/hooks/useDepartments";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
-
 export default function AddDepartmentPage() {
+  const { t } = useTranslation();
   const [name, setName] = useState("");
   const [error, setError] = useState("");
 
@@ -21,8 +20,7 @@ export default function AddDepartmentPage() {
       await addNewDepartment({ name });
       alert(`"${name}" department added successfully.`);
       navigate("/departments");
-
-    } catch (err:any) {
+    } catch (err: any) {
       alert(err.message);
     }
   };
@@ -30,14 +28,13 @@ export default function AddDepartmentPage() {
   return (
     <div className="min-h-screen bg-gray-100 py-10 px-0">
       <div className="w-[95%] max-w-none mx-auto bg-white shadow-md rounded-lg p-6">
-
         {/* 🔥 Title */}
-        <h2 className="text-xl font-semibold mb-6">Add Department</h2>
+        <h2 className="text-xl font-semibold mb-6">{t("departments.add")}</h2>
 
         {/* 🔥 Input */}
         <div className="mb-4">
           <label className="block text-sm text-gray-600 mb-1">
-            Department Name
+            {t("departments.name")}
           </label>
 
           <input
@@ -47,12 +44,10 @@ export default function AddDepartmentPage() {
               setError("");
             }}
             className="w-full border p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-500"
-            placeholder="Enter department name"
+            placeholder={t("departments.namePlaceholder")}
           />
 
-          {error && (
-            <p className="text-red-500 text-sm mt-1">{error}</p>
-          )}
+          {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
         </div>
 
         {/* 🔥 Actions */}
@@ -61,19 +56,17 @@ export default function AddDepartmentPage() {
             onClick={handleSave}
             className="bg-cyan-600 hover:bg-cyan-700 text-white px-4 py-2 rounded-md"
           >
-            Save
+            {t("common.save")}
           </button>
 
           <button
             onClick={() => navigate("/departments")}
             className="bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded-md"
           >
-            Cancel
+            {t("common.cancel")}
           </button>
         </div>
-
       </div>
     </div>
   );
 }
-

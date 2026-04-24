@@ -564,6 +564,76 @@ export default function App() {
 //Departments edilecekkkkkkkkkkk
 
 
+//tercume ucun olanlarrrrrrrrrrrrrrrrrrrrrrr
+
+//smartTourdaki ile tam muqayise et .
+
+//niye index.ts verdik?
+
+
+//hem de consloe loglari alertleri ve forbbiden ve notfound pagleri tercume et.
+
+//svg ile image ferqi
+
+
+//mantine islet 
+
+
+//rus diliden tercumeni elnurdan sorus
+
+//ve kodumda commit yaz.
+
+//ve button ne vaxt w ne vaxt ancaq padding ne vaxt ise her ikisi lazimdir.
+
+
+//navbar x de elave et ki menu acilib baglansin.
+
+
+  // // 🔥 GET BY ID (page açılarkən)
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     if (!id) return;
+
+  //     try {
+  //       const data = await getDepartmentById(id);
+  //       setName(data.name);
+  //       setImageUrl(data.imageUrl ?? null);
+  //     } catch {
+  //        setError(t("errors.loadFailed"));
+  //     }
+  //   };
+
+  //   fetchData();
+  // // }, [id, getDepartmentById, t]);
+  // }, [id]); //niye dependacy evvel duzgun islemirdi (yeni update-e silmek olmurdu inputu)
+
+  //umumi biz niye bele yazdiq. 3 dene dependacny-de olan.
+
+
+//tercume ucun olanlarrrrrrrrrrrrrrrrrrrrrrrrrrr
+
+
+//derhal ne edilecek
+
+//sign in ucun de dil ve theme islet.
+
+//navbar x de elave et ki menu acilib baglansin.
+
+//department bakcnde-de commmit et.
+
+//dark mode elave et
+
+//rollea gore tab goster
+
+//TanStack Query islet.
+
+//loading(skelotn) ve errorlar yaz toast yaz.
+
+//toast elave et.
+
+
+//
+
 
 
 
