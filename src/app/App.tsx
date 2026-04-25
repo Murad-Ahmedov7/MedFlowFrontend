@@ -632,7 +632,15 @@ export default function App() {
 
 //bu authda mutatuoni elave etdim deye console loglar deyisdi neezre al onu ve ozun sonradan duzelt. 
 
-//mutation errorlari try catch ile nece isledecek.yox mutation errorlar ozu ile ele  ile isleyim?
+//mutation errorlari(mutation.error) try catch ile nece isledecek.yox mutation errorlar ozu ile ele  ile isleyim?
+
+//bu mutation ve queryde icinde daxili gizli try catch var onu arasdir.
+
+//.mutateasync var onu da arasidr.
+
+//auth ve departmentde olan tanstack-i muqayise et kohnesi ile ve basa dus.
+
+
 
 
 // https://tanstack.com/query/v5/docs/framework/react/guides/mutations

@@ -4,35 +4,84 @@ import useDepartments from "@/features/departments/hooks/useDepartments";
 import { useTranslation } from "react-i18next";
 
 export default function UpdateDepartmentPage() {
+  // const { id } = useParams();
+  // const navigate = useNavigate();
+
+  // const { getDepartmentById, updateDepartmentById } = useDepartments();
+  // const { t } = useTranslation();
+
+  // const [name, setName] = useState("");
+  // const [imageUrl, setImageUrl] = useState<string | null>(null);
+  // const [error, setError] = useState("");
+  // const [loading, setLoading] = useState(false);
+
+  // // 🔥 GET BY ID (page açılarkən)
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     if (!id) return;
+
+  //     try {
+  //       const data = await getDepartmentById(id);
+  //       setName(data.name);
+  //       setImageUrl(data.imageUrl ?? null);
+  //     } catch {
+  //       setError(t("errors.loadFailed"));
+  //     }
+  //   };
+
+  //   fetchData();
+  // },[id]);
+
+  // // 🔥 SAVE (PUT)
+  // const handleUpdate = async () => {
+  //   if (!id) {
+  //     alert(t("errors.invalidId"));
+  //     return;
+  //   }
+
+  //   if (!name.trim()) {
+  //     setError(t("errors.required"));
+  //     return;
+  //   }
+
+  //   try {
+  //     setLoading(true);
+
+  //     await updateDepartmentById(id, {
+  //       name,
+  //       imageUrl,
+  //     });
+  //     alert(t("departments.updated", { name }));
+  //     navigate("/departments");
+  //   } catch (err: any) {
+  //     alert(err?.message || t("errors.updateFailed"));
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+
   const { id } = useParams();
   const navigate = useNavigate();
-
-  const { getDepartmentById, updateDepartmentById } = useDepartments();
   const { t } = useTranslation();
 
+  const { department, departmentLoading, updateDepartmentById } =
+    useDepartments();
+
+  // form state (yalnız UI üçün)
   const [name, setName] = useState("");
   const [imageUrl, setImageUrl] = useState<string | null>(null);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // 🔥 GET BY ID (page açılarkən)
+  // 🔥 TanStack data gələndə form doldururuq
   useEffect(() => {
-    const fetchData = async () => {
-      if (!id) return;
+    if (department) {
+      setName(department.name);
+      setImageUrl(department.imageUrl ?? null);
+    }
+  }, [department]);
 
-      try {
-        const data = await getDepartmentById(id);
-        setName(data.name);
-        setImageUrl(data.imageUrl ?? null);
-      } catch {
-        setError(t("errors.loadFailed"));
-      }
-    };
-
-    fetchData();
-  },[id]);
-
-  // 🔥 SAVE (PUT)
+  // 🔥 UPDATE
   const handleUpdate = async () => {
     if (!id) {
       alert(t("errors.invalidId"));
@@ -47,10 +96,14 @@ export default function UpdateDepartmentPage() {
     try {
       setLoading(true);
 
-      await updateDepartmentById(id, {
-        name,
-        imageUrl,
+      await updateDepartmentById({
+        id,
+        data: {
+          name,
+          imageUrl,
+        },
       });
+
       alert(t("departments.updated", { name }));
       navigate("/departments");
     } catch (err: any) {
