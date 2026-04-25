@@ -23,7 +23,7 @@ export const Navbar = () => {
   };
 
   return (
-<div className="w-full h-16 bg-white border-b border-gray-600/40 flex items-center justify-end px-6">
+<div className="w-full min-h-16  bg-white border-b border-gray-600/40 flex items-center justify-end px-6">
   
   <div className="flex items-center gap-4">
     

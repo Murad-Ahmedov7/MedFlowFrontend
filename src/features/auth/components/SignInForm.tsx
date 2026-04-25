@@ -55,12 +55,7 @@ export default function SignInForm() {
         </button>
       </div>
 
-      <div className="text-white text-lg flex gap-2 ">
-        Don't have an account?
-        <Link to="/auth/sign-up" className="text-cyan-400 underline">
-          Sign Up
-        </Link>
-      </div>
+
     </form>
   );
 }

@@ -613,7 +613,10 @@ export default function App() {
 //tercume ucun olanlarrrrrrrrrrrrrrrrrrrrrrrrrrr
 
 
-//derhal ne edilecek
+
+
+
+//derhal ne edilecekkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
 
 //sign in ucun de dil ve theme islet.
 
@@ -625,14 +628,37 @@ export default function App() {
 
 //rollea gore tab goster
 
-//TanStack Query islet.
+//TanStack Query islet.(tam basa dus.) umumi sorgular da error handling ve cagira duzelt.
+
+//bu authda mutatuoni elave etdim deye console loglar deyisdi neezre al onu ve ozun sonradan duzelt. 
+
+//mutation errorlari try catch ile nece isledecek.yox mutation errorlar ozu ile ele  ile isleyim?
+
+
+// https://tanstack.com/query/v5/docs/framework/react/guides/mutations
+
+// Form/action → mutateAsync (function kimi davranır)
+// Display/state → mutation.error (state kimi davranır)
+
+//error handling-e mutationsiz daha yaxsi bil ve sonra mutation ile oyren.
+
+
+
+
+//loading errorlar nezer yetir.be useFormda olan error loading ile tanstack queryde olan isloADING ERROR FERQILERI
 
 //loading(skelotn) ve errorlar yaz toast yaz.
 
 //toast elave et.
 
 
-//
+
+
+//scroll meselesin hell et ki eger cox elemetn yoxdusa scroll olmasin o qeder eger varsa olsun
+
+
+//derhal ne edilecekkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
+
 
 
 

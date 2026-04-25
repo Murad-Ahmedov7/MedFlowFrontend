@@ -1,3 +1,46 @@
+// import { useSignIn } from "./useSignIn";
+// import type { SignInRequest } from "../types/auth.types";
+// import { useForm } from "react-hook-form";
+// import { useNavigate } from "react-router-dom";
+
+// export const useSignInForm = () => {
+//   const { handleSignIn, loading } = useSignIn();
+
+//   const navigate=useNavigate();
+
+//   const {
+//     register,
+//     handleSubmit,
+//     watch,
+//     reset,
+//     formState: { errors },
+//   } = useForm<SignInRequest>({ mode: "onChange" });
+
+//   const onSubmit = async (data: SignInRequest) => {
+//     console.log("FORM: 1. submit başladı");
+//     try {
+//       await handleSignIn(data);
+//       console.log("FORM: 2. SUCCESS bitdi");
+//       alert("You have successfully signed in.");
+//       navigate("/departments");
+//     } catch (err: any) {
+//       console.log("FORM: 3. CATCH işlədi");
+//       console.log("FORM ERROR:", err.message);
+//       alert(err.message);
+//     }
+//   };
+
+//   return {
+//     register,
+//     handleSubmit: handleSubmit(onSubmit),
+//     errors,
+//     loading,
+//     watch,
+//     reset,
+//   };
+// };
+
+
 import { useSignIn } from "./useSignIn";
 import type { SignInRequest } from "../types/auth.types";
 import { useForm } from "react-hook-form";
@@ -6,7 +49,7 @@ import { useNavigate } from "react-router-dom";
 export const useSignInForm = () => {
   const { handleSignIn, loading } = useSignIn();
 
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
   const {
     register,
@@ -17,15 +60,12 @@ export const useSignInForm = () => {
   } = useForm<SignInRequest>({ mode: "onChange" });
 
   const onSubmit = async (data: SignInRequest) => {
-    console.log("FORM: 1. submit başladı");
     try {
       await handleSignIn(data);
-      console.log("FORM: 2. SUCCESS bitdi");
+
       alert("You have successfully signed in.");
       navigate("/departments");
     } catch (err: any) {
-      console.log("FORM: 3. CATCH işlədi");
-      console.log("FORM ERROR:", err.message);
       alert(err.message);
     }
   };

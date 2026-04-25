@@ -30,5 +30,8 @@
     "loadFailed": "Məlumat yüklənə bilmədi",
     "updateFailed": "Yeniləmə uğursuz oldu",
     "invalidId": "Yanlış şöbə ID-si"
+  },
+   "auth": {
+    "signup": "Qeydiyyat"
   }
 }

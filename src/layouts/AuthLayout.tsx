@@ -3,9 +3,9 @@ import { Navigate, Outlet } from "react-router-dom";
 
 export default function AuthLayout() {
   const token = tokenService.getToken();
-
-  if (token) {
-    return <Navigate to="/departments" />;
+  
+  if (token && location.pathname === "/auth/sign-in") {
+    return <Navigate to="/departments" replace />;
   }
 
   return (

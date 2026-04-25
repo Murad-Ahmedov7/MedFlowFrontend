@@ -30,5 +30,8 @@
     "loadFailed": "Failed to load data",
     "updateFailed": "Update failed",
     "invalidId": "Invalid department ID"
+  },
+    "auth": {
+    "signup": "Sign Up"
   }
 }

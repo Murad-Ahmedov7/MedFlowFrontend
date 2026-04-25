@@ -14,41 +14,41 @@ export const router = createBrowserRouter([
   {
     path: "/auth",
     element: <AuthLayout />,
-    children: [
-      { path: "sign-in", element: <SignInPage /> },
-      { path: "sign-up", element: <SignUpPage /> },
-    ],
+    children: [{ path: "sign-in", element: <SignInPage /> }],
   },
   {
     path: "/",
     element: <Navigate to="/auth/sign-in" />,
   },
 
+  {
+    element: <ProtectedLayout />,
+    children: [
+      {
+        path: "/",
+        element: <MainLayout />,
+        children: [
+          { index: true, element: <Navigate to="/departments" /> },
 
+          {
+            path: "/departments",
+            children: [
+              { index: true, element: <DepartmentsPage /> },
+              { path: "new", element: <AddDepartmentPage /> },
+              { path: "edit/:id", element: <UpdateDepartmentPage /> },
+            ],
+          },
 
-{
-  element: <ProtectedLayout />,
-  children: [
-    {
-      path: "/",
-      element: <MainLayout />,
-      children: [
-        { index: true, element: <Navigate to="/departments" /> },
+          {
+            path: "/auth",
+            children: [{ path: "sign-up", element: <SignUpPage /> }],
+          },
+        ],
+      },
+    ],
+  },
 
-        {
-          path: "/departments",
-          children: [
-            { index: true, element: <DepartmentsPage /> },
-            { path: "new", element: <AddDepartmentPage /> },
-            { path: "edit/:id", element: <UpdateDepartmentPage /> }, 
-          ],
-        },
-      ],
-    },
-  ],
-},
-
-    // ⛔ FORBIDDEN (403)
+  // ⛔ FORBIDDEN (403)
   {
     path: "/forbidden",
     element: <ForbiddenPage />,
@@ -59,6 +59,54 @@ export const router = createBrowserRouter([
   },
 ]);
 
+
+
+
+// /auth → normalda public zone
+
+// 👉 sən isə:
+
+// /auth/sign-up → protected etmisən
+
+// 👉 bu qarışıqdır
+
+
+
+
+// ❗ Problem 1 — /auth iki dəfə istifadə olunur
+// // public
+// {
+//   path: "/auth",
+//   element: <AuthLayout />,
+// }
+
+// // protected
+// {
+//   path: "/auth",
+//   children: [{ path: "sign-up", ... }],
+// }
+
+// 👉 Problem:
+
+// eyni path → 2 fərqli zone (public + protected) ❌
+
+// Niyə vacibdir:
+
+// routing davranışı qarışır
+// debug çətinləşir
+// role əlavə edəndə partlayacaq
+
+
+
+// ❗ Problem 2 — absolute path istifadəsi
+// path: "/departments"
+// path: "/auth"
+
+// 👉 nested route içində / yazmaq:
+
+// parent-i bypass edir ❌
+
+//ne etmeliyem bu halda?
 
 
 // 🎯 NƏTİCƏ
@@ -79,17 +127,11 @@ export const router = createBrowserRouter([
 // 404 Not Found
 // 💿 Hey developer 👋
 
-
 // You can provide a way better UX than this when your app throws errors by providing your own ErrorBoundary or errorElement prop on your route.
-
-
 
 //Navigate,navibagte Link a link ferqi\
 
-
 //sidebarda home yaz ?
-
-
 
 // ❗ BURADA ƏSAS MƏQAM
 
@@ -107,9 +149,6 @@ export const router = createBrowserRouter([
 // return <Outlet />
 
 // 👉 qayda tətbiq edir
-
-
-
 
 //outletin isleme mentiqine bax
 

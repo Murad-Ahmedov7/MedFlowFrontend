@@ -12,6 +12,7 @@ import {
   FaFlag,
   FaChevronRight,
   FaChevronUp,
+  FaUserPlus,
 } from "react-icons/fa";
 import { NavLink, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -75,21 +76,26 @@ useEffect(() => {
   // ];
 
 
-  const menu = [
-    {
-      titleKey: "menu.title",
-      items: [
-        {
-          labelKey: "departments.title",
-          icon: <FaBuilding />,
-          path: "/departments",
-          children: [
-            { labelKey: "departments.add", path: "/departments/new" },
-          ],
-        },
-      ],
-    },
-  ];
+const menu = [
+  {
+    titleKey: "menu.title",
+    items: [
+         {
+        labelKey: "auth.signup", // TODO: rename to users.create
+        icon: <FaUserPlus />,
+        path: "auth/sign-up",
+      },
+      {
+        labelKey: "departments.title",
+        icon: <FaBuilding />,
+        path: "/departments",
+        children: [
+          { labelKey: "departments.add", path: "/departments/new" },
+        ],
+      },
+    ],
+  },
+];
 
 
 

@@ -22,12 +22,7 @@ export default function SignUpForm() {
 
       <div className="text-white flex flex-col items-center gap-4 ">
         <p className="text-white text-4xl  font-bold ">Create an account</p>
-        <div className="flex gap-1">
-          <p>Already have account?</p>
-          <Link to="/auth/sign-in" className="text-cyan-400 underline">
-            Sign in
-          </Link>
-        </div>
+
       </div>
 
       <AuthInput
@@ -138,7 +133,4 @@ export default function SignUpForm() {
     </form>
   );
 }
-
-
-
 
