@@ -245,10 +245,10 @@ export default function App() {
 
  //kod paylasmadan elave github readme ve qoy ve islemesini sekil ve videsounu da 
 
+// https://www.youtube.com/watch?v=R7b3OlEyqug
 
 //#endregion
 
-// https://www.youtube.com/watch?v=R7b3OlEyqug
 
 
 
@@ -299,7 +299,7 @@ export default function App() {
 //#endregion
 
 
-//Departments edilecekkkkkkkkkkk
+// #region Departments edilecekkkkkkkkkkk
 
 // 🔹 Commit / Git
 
@@ -561,10 +561,10 @@ export default function App() {
 
 
 
-//Departments edilecekkkkkkkkkkk
+// #endregion 
 
 
-//tercume ucun olanlarrrrrrrrrrrrrrrrrrrrrrr
+// #region tercume ucun olanlarrrrrrrrrrrrrrrrrrrrrrr
 
 //smartTourdaki ile tam muqayise et .
 
@@ -610,23 +610,15 @@ export default function App() {
   //umumi biz niye bele yazdiq. 3 dene dependacny-de olan.
 
 
-//tercume ucun olanlarrrrrrrrrrrrrrrrrrrrrrrrrrr
+// #endregion 
 
 
 
 
 
-//derhal ne edilecekkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
+// #region derhal ne edilecekkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
 
-//sign in ucun de dil ve theme islet.
 
-//navbar x de elave et ki menu acilib baglansin.
-
-//department bakcnde-de commmit et.
-
-//dark mode elave et
-
-//rollea gore tab goster
 
 //TanStack Query islet.(tam basa dus.) umumi sorgular da error handling ve cagira duzelt.
 
@@ -655,9 +647,7 @@ export default function App() {
 
 //loading errorlar nezer yetir.be useFormda olan error loading ile tanstack queryde olan isloADING ERROR FERQILERI
 
-//loading(skelotn) ve errorlar yaz toast yaz.
 
-//toast elave et.
 
 
 
@@ -665,7 +655,7 @@ export default function App() {
 //scroll meselesin hell et ki eger cox elemetn yoxdusa scroll olmasin o qeder eger varsa olsun
 
 
-//derhal ne edilecekkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
+//#endregion
 
 
 

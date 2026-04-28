@@ -1,8 +1,15 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import ReactCountryFlag from "react-country-flag";
+import { FiX, FiMenu } from "react-icons/fi";
 
-export const Navbar = () => {
+
+interface NavbarProps {
+  isOpen: boolean;
+  toggle: () => void;
+};
+
+export const Navbar = ({ isOpen, toggle }: NavbarProps) => {
   const [open, setOpen] = useState(false);
   const { i18n } = useTranslation();
 
@@ -23,61 +30,64 @@ export const Navbar = () => {
   };
 
   return (
-<div className="w-full min-h-16  bg-white border-b border-gray-600/40 flex items-center justify-end px-6">
-  
-  <div className="flex items-center gap-4">
-    
-    {/* 🌍 Language */}
-    <div className="relative">
+    <div className="w-full min-h-16  bg-white border-b border-gray-600/40 flex items-center justify-between  px-6">
       <button
-        onClick={() => setOpen(!open)}
+         onClick={toggle}
         className="w-12 h-12 flex items-center justify-center rounded-2xl border border-gray-200 bg-white hover:bg-gray-50 transition shadow-sm"
       >
-        <ReactCountryFlag
-          countryCode={langToCountry[currentLang]}
-          svg
-          className="w-7 h-7"
-        />
+         {isOpen ? <FiX className="text-xl" /> : <FiMenu className="text-xl" />}
       </button>
 
-      {open && (
-        <div className="absolute right-0 mt-3 w-56 bg-white border border-gray-200 rounded-2xl shadow-xl overflow-hidden z-50">
-          
+      <div className=" flex items-center gap-4">
+        {/* ❌ Close / Toggle button */}
+
+        {/* 🌍 Language */}
+        <div className="relative">
           <button
-            onClick={() => changeLang("az")}
-            className="w-full flex items-center gap-4 px-5 py-3 hover:bg-gray-50 transition"
+            onClick={() => setOpen(!open)}
+            className="w-12 h-12 flex items-center justify-center rounded-2xl border border-gray-200 bg-white hover:bg-gray-50 transition shadow-sm"
           >
-            <ReactCountryFlag countryCode="AZ" svg className="w-7 h-7" />
-            <span className="text-base font-medium">Azerbaijani</span>
+            <ReactCountryFlag
+              countryCode={langToCountry[currentLang]}
+              svg
+              className="w-7 h-7"
+            />
           </button>
 
-          <button
-            onClick={() => changeLang("en")}
-            className="w-full flex items-center gap-4 px-5 py-3 hover:bg-gray-50 transition"
-          >
-            <ReactCountryFlag countryCode="GB" svg className="w-7 h-7" />
-            <span className="text-base font-medium">English</span>
-          </button>
+          {open && (
+            <div className="absolute right-0 mt-3 w-56 bg-white border border-gray-200 rounded-2xl shadow-xl overflow-hidden z-50">
+              <button
+                onClick={() => changeLang("az")}
+                className="w-full flex items-center gap-4 px-5 py-3 hover:bg-gray-50 transition"
+              >
+                <ReactCountryFlag countryCode="AZ" svg className="w-7 h-7" />
+                <span className="text-base font-medium">Azerbaijani</span>
+              </button>
 
-          <button
-            onClick={() => changeLang("ru")}
-            className="w-full flex items-center gap-4 px-5 py-3 hover:bg-gray-50 transition"
-          >
-            <ReactCountryFlag countryCode="RU" svg className="w-7 h-7" />
-            <span className="text-base font-medium">Russian</span>
-          </button>
+              <button
+                onClick={() => changeLang("en")}
+                className="w-full flex items-center gap-4 px-5 py-3 hover:bg-gray-50 transition"
+              >
+                <ReactCountryFlag countryCode="GB" svg className="w-7 h-7" />
+                <span className="text-base font-medium">English</span>
+              </button>
 
+              <button
+                onClick={() => changeLang("ru")}
+                className="w-full flex items-center gap-4 px-5 py-3 hover:bg-gray-50 transition"
+              >
+                <ReactCountryFlag countryCode="RU" svg className="w-7 h-7" />
+                <span className="text-base font-medium">Russian</span>
+              </button>
+            </div>
+          )}
         </div>
-      )}
+
+        {/* 🌙 Theme */}
+        <button className="w-12 h-12 flex items-center justify-center rounded-2xl border border-gray-200 bg-white hover:bg-gray-50 transition shadow-sm text-xl">
+          🌙
+        </button>
+      </div>
     </div>
-
-    {/* 🌙 Theme */}
-    <button className="w-12 h-12 flex items-center justify-center rounded-2xl border border-gray-200 bg-white hover:bg-gray-50 transition shadow-sm text-xl">
-      🌙
-    </button>
-
-  </div>
-</div>
   );
 };
-
