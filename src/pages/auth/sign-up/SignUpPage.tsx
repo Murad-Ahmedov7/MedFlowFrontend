@@ -1,5 +1,7 @@
 
-import SignUpForm from "@/features/auth/components/SignUpForm";
+// import SignUpForm from "@/features/auth/components/SignUpForm";
+
+import SignUpForm from "@/features/staff/components/SignUpForm";
 
 export default function SignUpPage() {
   return (
@@ -8,3 +10,4 @@ export default function SignUpPage() {
     </>
   );
 }
+//burada basqa SignUpForm-du onu nezere al.

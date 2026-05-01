@@ -8,7 +8,7 @@ export default function MainLayout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   return (
-    <div className="flex h-screen overflow-hidden  ">
+    <div className="flex min-h-screen ">
       {/* Sidebar */}
       <SideBar isSidebarOpen={isSidebarOpen} />
 
@@ -21,7 +21,7 @@ export default function MainLayout() {
           toggle={() => setIsSidebarOpen((prev) => !prev)}
         />
         {location.pathname == "/auth/sign-up" ? (
-          <div className="relative h-screen  flex items-center justify-center bg-gradient-to-r from-cyan-400 to-white">
+          <div className="relative min-h-screen overflow-y-auto   flex items-center justify-center bg-gradient-to-r from-cyan-400 to-white">
             {/* Overlay yalnız burda işləyəcək */}
             <div className="absolute inset-0 bg-black/30 z-10"></div>
 
@@ -31,7 +31,7 @@ export default function MainLayout() {
             </div>
           </div>
         ) : (
-          <main className="  p-10 bg-gray-300/40">
+          <main className=" p-10 bg-gray-300/40">
             <Outlet />
           </main>
         )}
