@@ -1,40 +1,45 @@
-  {
-    "app": {
-      "name": "MedFlow",
-      "subtitle": "Medical Management System"
-    },
-    "menu": {
-      "title": "MENU"
-    },
-    "departments": {
-      "title": "Departments",
-      "add": "Add Department",
-      "edit": "Edit Department",
-      "updated": "\"{{name}}\" department updated successfully.",
-      "name": "Department Name",
-      "namePlaceholder": "Enter department name",
-      "id": "ID",
-      "empty": "No departments available"
-    },
-    "common": {
-      "delete": "Delete",
-      "edit": "Edit",
-      "view": "View",
-      "save": "Save",
-      "cancel": "Cancel",
-      "update": "Update",
-      "updating": "Updating..."
-    },
-    "errors": {
-      "required": "Name is required",
-      "loadFailed": "Failed to load data",
-      "updateFailed": "Update failed",
-      "invalidId": "Invalid department ID"
-    },
+{
+  "app": {
+    "name": "MedFlow",
+    "subtitle": "Medical Management System"
+  },
+  "menu": {
+    "title": "MENU"
+  },
+  "departments": {
+    "title": "Departments",
+    "add": "Add Department",
+    "edit": "Edit Department",
+    "updated": "\"{{name}}\" department updated successfully.",
+    "name": "Department Name",
+    "namePlaceholder": "Enter department name",
+    "id": "ID",
+    "empty": "No departments available"
+  },
+  "common": {
+    "delete": "Delete",
+    "edit": "Edit",
+    "view": "View",
+    "save": "Save",
+    "cancel": "Cancel",
+    "update": "Update",
+    "updating": "Updating..."
+  },
 
- "createUser": {
+  "pagination": {
+    "previous": "Previous",
+    "next": "Next"
+  },
+  "errors": {
+    "required": "Name is required",
+    "loadFailed": "Failed to load data",
+    "updateFailed": "Update failed",
+    "invalidId": "Invalid department ID"
+  },
+
+  "createUser": {
     "title": "Create User",
-    "subtitle": "Create an account", 
+    "subtitle": "Create an account",
 
     "fields": {
       "fullName": "Full Name",
@@ -78,8 +83,3 @@
     }
   }
 }
-  
-
-
-
-

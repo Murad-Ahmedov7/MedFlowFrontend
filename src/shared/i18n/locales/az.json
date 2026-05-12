@@ -25,6 +25,10 @@
     "update": "Yenilə",
     "updating": "Yenilənir..."
   },
+  "pagination": {
+    "previous": "Əvvəlki",
+    "next": "Növbəti"
+  },
   "errors": {
     "required": "Ad mütləqdir",
     "loadFailed": "Məlumat yüklənə bilmədi",
@@ -34,7 +38,7 @@
 
   "createUser": {
     "title": "İstifadəçi yarat",
-  "subtitle": "Yeni hesab yarat", 
+    "subtitle": "Yeni hesab yarat",
     "fields": {
       "fullName": "Ad Soyad",
       "email": "E-poçt",
