@@ -20,7 +20,7 @@ export default function MainLayout() {
           isOpen={isSidebarOpen}
           toggle={() => setIsSidebarOpen((prev) => !prev)}
         />
-        {location.pathname == "/auth/sign-up" ? (
+        {location.pathname == "/users/create" ? (
           <div className="relative min-h-screen overflow-y-auto   flex items-center justify-center bg-gradient-to-r from-cyan-400 to-white">
             {/* Overlay yalnız burda işləyəcək */}
             <div className="absolute inset-0 bg-black/30 z-10"></div>

@@ -1,6 +1,6 @@
 
 import { apiClient } from "@/services/apiClient";
-import type { CreateDoctorRequest, CreateReceptionistRequest, CreateStaffResponse } from "../types/staff.types";
+import type { CreateDoctorRequest, CreateReceptionistRequest, CreateUserResponse } from "../types/users.types";
 import type { ApiResponse } from "@/types/api.types";
 
 
@@ -41,10 +41,10 @@ const handleApiError = (err: any): never => {
 
 
 
-export const staffService = {
+export const userService = {
   createDoctor: async (data: CreateDoctorRequest) => {
     try {
-      const res = await apiClient.post<ApiResponse<CreateStaffResponse>>("/doctors", data);
+      const res = await apiClient.post<ApiResponse<CreateUserResponse>>("/doctors", data);
 
       if (!res.data.isSuccess) {
         throw new Error(res.data.errors?.[0] || "Create Doctor failed");
@@ -58,7 +58,7 @@ export const staffService = {
 
   createReceptionist: async (data: CreateReceptionistRequest) => {
     try {
-      const res = await apiClient.post<ApiResponse<CreateStaffResponse>>("/receptionists", data);
+      const res = await apiClient.post<ApiResponse<CreateUserResponse>>("/receptionists", data);
 
       if (!res.data.isSuccess) {
         throw new Error(res.data.errors?.[0] || "Create Receptionist failed");

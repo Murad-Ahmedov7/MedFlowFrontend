@@ -32,7 +32,50 @@
     "invalidId": "Неверный ID отдела"
   },
 
-  "auth": {
-    "signup": "Регистрация"
+
+  "createUser": {
+    "title": "Создать пользователя",
+    "subtitle": "Создать аккаунт",
+    "fields": {
+      "fullName": "Полное имя",
+      "email": "Электронная почта",
+      "phone": "Телефон",
+      "password": "Пароль",
+      "confirmPassword": "Подтвердите пароль",
+      "department": "Отдел",
+      "role": "Роль"
+    },
+
+    "placeholders": {
+      "fullName": "Введите ваше имя",
+      "email": "Введите вашу почту",
+      "password": "Введите пароль",
+      "confirmPassword": "Подтвердите пароль",
+      "role": "Выберите роль",
+      "department": "Выберите отдел"
+    },
+
+    "roles": {
+      "doctor": "Доктор",
+      "receptionist": "Регистратор"
+    },
+
+    "validation": {
+      "fullNameRequired": "Полное имя обязательно",
+      "emailRequired": "Электронная почта обязательна",
+      "invalidEmail": "Неверный формат электронной почты",
+      "phoneRequired": "Телефон обязателен",
+      "passwordRequired": "Пароль обязателен",
+      "passwordMin": "Пароль должен содержать минимум 8 символов",
+      "confirmPasswordRequired": "Подтвердите пароль",
+      "passwordMismatch": "Пароли не совпадают",
+      "departmentRequired": "Отдел обязателен"
+    },
+
+    "actions": {
+      "submit": "Создать пользователя",
+      "loading": "Создание..."
+    }
   }
+
 }

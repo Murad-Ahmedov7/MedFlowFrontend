@@ -31,7 +31,49 @@
     "updateFailed": "Yeniləmə uğursuz oldu",
     "invalidId": "Yanlış şöbə ID-si"
   },
-   "auth": {
-    "signup": "Qeydiyyat"
+
+  "createUser": {
+    "title": "İstifadəçi yarat",
+  "subtitle": "Yeni hesab yarat", 
+    "fields": {
+      "fullName": "Ad Soyad",
+      "email": "E-poçt",
+      "phone": "Telefon",
+      "password": "Şifrə",
+      "confirmPassword": "Şifrəni təsdiqlə",
+      "department": "Şöbə",
+      "role": "Rol"
+    },
+
+    "placeholders": {
+      "fullName": "Adınızı daxil edin",
+      "email": "E-poçtunuzu daxil edin",
+      "password": "Şifrənizi daxil edin",
+      "confirmPassword": "Şifrəni təsdiqləyin",
+      "role": "Rol seçin",
+      "department": "Şöbə seçin"
+    },
+
+    "roles": {
+      "doctor": "Həkim",
+      "receptionist": "Resepsiyon"
+    },
+
+    "validation": {
+      "fullNameRequired": "Ad Soyad mütləqdir",
+      "emailRequired": "E-poçt mütləqdir",
+      "invalidEmail": "Yanlış e-poçt formatı",
+      "phoneRequired": "Telefon nömrəsi mütləqdir",
+      "passwordRequired": "Şifrə mütləqdir",
+      "passwordMin": "Şifrə minimum 8 simvol olmalıdır",
+      "confirmPasswordRequired": "Şifrə təsdiqi mütləqdir",
+      "passwordMismatch": "Şifrələr uyğun gəlmir",
+      "departmentRequired": "Şöbə mütləqdir"
+    },
+
+    "actions": {
+      "submit": "İstifadəçi yarat",
+      "loading": "Yaradılır..."
+    }
   }
 }

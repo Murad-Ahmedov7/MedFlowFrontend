@@ -17,10 +17,11 @@ import {
 import { NavLink, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useAuth } from "@/features/auth/context/AuthContext";
 
 interface SidebarProps {
   isSidebarOpen: boolean;
-}; 
+}
 
 export default function Sidebar({ isSidebarOpen }: SidebarProps) {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
@@ -28,6 +29,8 @@ export default function Sidebar({ isSidebarOpen }: SidebarProps) {
   const location = useLocation();
 
   const { t } = useTranslation();
+
+  const { role } = useAuth();
 
   useEffect(() => {
     if (location.pathname.startsWith("/departments/new")) {
@@ -83,16 +86,24 @@ export default function Sidebar({ isSidebarOpen }: SidebarProps) {
     {
       titleKey: "menu.title",
       items: [
-        {
-          labelKey: "auth.signup", // TODO: rename to users.create
-          icon: <FaUserPlus />,
-          path: "auth/sign-up",
-        },
+        ...(role === "admin" || role === "receptionist"
+          ? [
+              {
+                labelKey: "createUser.title",
+                icon: <FaUserPlus />,
+                path: "users/create",
+              },
+            ]
+          : []),
         {
           labelKey: "departments.title",
           icon: <FaBuilding />,
           path: "/departments",
-          children: [{ labelKey: "departments.add", path: "/departments/new" }],
+          ...(role === "admin" && {
+            children: [
+              { labelKey: "departments.add", path: "/departments/new" },
+            ],
+          }),
         },
       ],
     },
@@ -158,8 +169,8 @@ export default function Sidebar({ isSidebarOpen }: SidebarProps) {
                         >
                           <span className="text-lg">{item.icon}</span>
                           {!isSidebarOpen ? (
-                          <span
-                            className="
+                            <span
+                              className="
                               absolute left-full ml-3
                               top-1/2 -translate-y-1/2
                               bg-white text-gray-800 text-sm
@@ -169,13 +180,12 @@ export default function Sidebar({ isSidebarOpen }: SidebarProps) {
                               transition duration-200
                               whitespace-nowrap z-50
                             "
-                          >
-                            {t(item.labelKey)}
-                          </span>
-                        ):(
-                          <span>{t(item.labelKey)}</span>
-                        )
-                        }
+                            >
+                              {t(item.labelKey)}
+                            </span>
+                          ) : (
+                            <span>{t(item.labelKey)}</span>
+                          )}
                         </NavLink>
 
                         {isSidebarOpen && (
@@ -227,9 +237,7 @@ export default function Sidebar({ isSidebarOpen }: SidebarProps) {
                 }
 
                 return (
-                  <div
-                  className="group relative"
-                    >
+                  <div className="group relative">
                     <NavLink
                       key={idx}
                       to={item.path}
@@ -243,10 +251,10 @@ export default function Sidebar({ isSidebarOpen }: SidebarProps) {
                       }
                     >
                       <span className="text-lg">{item.icon}</span>
-                        {/* 🔥 TOOLTIP (closed halda) */}
-                        {!isSidebarOpen ? (
-                          <span
-                            className="
+                      {/* 🔥 TOOLTIP (closed halda) */}
+                      {!isSidebarOpen ? (
+                        <span
+                          className="
                               absolute left-full ml-3
                               top-1/2 -translate-y-1/2
                               bg-white text-gray-800 text-sm
@@ -256,14 +264,12 @@ export default function Sidebar({ isSidebarOpen }: SidebarProps) {
                               transition duration-200
                               whitespace-nowrap z-50
                             "
-                          >
-                            {t(item.labelKey)}
-                          </span>
-                        ):(
-                          <span>{t(item.labelKey)}</span>
-                        )
-                        }
-
+                        >
+                          {t(item.labelKey)}
+                        </span>
+                      ) : (
+                        <span>{t(item.labelKey)}</span>
+                      )}
                     </NavLink>
                   </div>
                 );

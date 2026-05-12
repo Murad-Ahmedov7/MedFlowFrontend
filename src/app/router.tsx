@@ -1,7 +1,7 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
 import AuthLayout from "@/layouts/AuthLayout";
 import SignInPage from "@/pages/auth/sign-in/SignInPage";
-import SignUpPage from "@/pages/auth/sign-up/SignUpPage";
+// import SignUpPage from "@/pages/auth/sign-up/SignUpPage";
 import MainLayout from "@/layouts/MainLayout";
 import DepartmentsPage from "@/pages/departments/DepartmentsPage";
 import NotFoundPage from "@/pages/NotFoundPage";
@@ -9,6 +9,8 @@ import ProtectedLayout from "@/layouts/ProtectedLayout";
 import ForbiddenPage from "@/pages/ForbiddenPage";
 import UpdateDepartmentPage from "@/pages/departments/edit/UpdateDepartmentPage";
 import AddDepartmentPage from "@/pages/departments/new/AddDepartmentPage";
+import RoleProtectedRoute from "@/shared/routes/RoleProtectedRoute";
+import CreateUserPage from "@/pages/users/create/CreateUserPage";
 
 export const router = createBrowserRouter([
   {
@@ -34,14 +36,39 @@ export const router = createBrowserRouter([
             path: "/departments",
             children: [
               { index: true, element: <DepartmentsPage /> },
-              { path: "new", element: <AddDepartmentPage /> },
-              { path: "edit/:id", element: <UpdateDepartmentPage /> },
+
+              {
+                path: "new",
+                element: (
+                  <RoleProtectedRoute roles={["admin"]}>
+                    <AddDepartmentPage />
+                  </RoleProtectedRoute>
+                ),
+              },
+
+              {
+                path: "edit/:id",
+                element: (
+                  <RoleProtectedRoute roles={["admin"]}>
+                    <UpdateDepartmentPage />
+                  </RoleProtectedRoute>
+                ),
+              },
             ],
           },
 
           {
-            path: "/auth",
-            children: [{ path: "sign-up", element: <SignUpPage /> }],
+            path: "/users",
+            children: [
+              {
+                path: "create",
+                element: (
+                  <RoleProtectedRoute roles={["admin", "receptionist"]}>
+                    <CreateUserPage/>
+                  </RoleProtectedRoute>
+                ),
+              },
+            ],
           },
         ],
       },
@@ -59,9 +86,6 @@ export const router = createBrowserRouter([
   },
 ]);
 
-
-
-
 // /auth → normalda public zone
 
 // 👉 sən isə:
@@ -69,9 +93,6 @@ export const router = createBrowserRouter([
 // /auth/sign-up → protected etmisən
 
 // 👉 bu qarışıqdır
-
-
-
 
 // ❗ Problem 1 — /auth iki dəfə istifadə olunur
 // // public
@@ -96,8 +117,6 @@ export const router = createBrowserRouter([
 // debug çətinləşir
 // role əlavə edəndə partlayacaq
 
-
-
 // ❗ Problem 2 — absolute path istifadəsi
 // path: "/departments"
 // path: "/auth"
@@ -107,7 +126,6 @@ export const router = createBrowserRouter([
 // parent-i bypass edir ❌
 
 //ne etmeliyem bu halda?
-
 
 // 🎯 NƏTİCƏ
 

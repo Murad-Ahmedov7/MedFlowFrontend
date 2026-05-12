@@ -7,9 +7,9 @@
     import "@/shared/i18n";
 
     createRoot(document.getElementById("root")!).render(
-      <StrictMode>
+      // <StrictMode>
         <Providers>
           <App />
         </Providers>
-      </StrictMode>
+      //</StrictMode> 
     );

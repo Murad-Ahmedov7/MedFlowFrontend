@@ -1,8 +1,8 @@
 import { useForm } from "react-hook-form";
-import useStaff from "./useStaff";
-import type { CreateDoctorRequest } from "../types/staff.types";
+import useStaff from "./useUsers";
+import type { CreateDoctorRequest } from "../types/users.types";
 
-export const useCreateDoctorForm = () => {
+export const useCreateDoctor = () => {
   const { createDoctor, creatingDoctor } = useStaff();
 
   const {

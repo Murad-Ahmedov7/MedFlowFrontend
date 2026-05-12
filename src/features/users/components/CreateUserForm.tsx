@@ -1,32 +1,32 @@
 import AuthInput from "@/features/auth/components/AuthInput";
 import PasswordInput from "@/features/auth/components/PasswordInput";
-import { useCreateDoctorForm } from "../hooks/useCreateDoctorForm";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useDepartments from "@/features/departments/hooks/useDepartments";
-import { useCreateReceptionistForm } from "../hooks/useCreateReceptionistForm";
 import { useCreatePatientForm } from "@/features/patients/hooks/useCreatePatientForm";
 import { BloodGroup, Gender } from "@/features/patients/types/patient.types";
+import { useAuth } from "@/features/auth/context/AuthContext";
+import { useCreateDoctor } from "../hooks/useCreateDoctor";
+import { useCreateReceptionist } from "../hooks/useCreateReceptionist";
+import { useTranslation } from "react-i18next";
 
-export default function SignUpForm() {
-  const [role, setRole] = useState<"Doctor" | "Receptionist" | "Patient" | "">(
-    "",
-  );
+export default function CreateUserForm() {
+  const [formRole, setFormRole] = useState<"doctor" | "receptionist" | "">("");
+  const { t } = useTranslation();
+  const { role: authRole } = useAuth();
 
-  const doctorForm = useCreateDoctorForm();
-  const receptionistForm = useCreateReceptionistForm();
-  const patientForm = useCreatePatientForm();
+  useEffect(() => {
+    console.log(authRole);
+  }, []);
 
-  const activeForm =
-    role === "Doctor"
-      ? doctorForm
-      : role === "Receptionist"
-        ? receptionistForm
-        : patientForm;
+  const doctorForm = useCreateDoctor();
+  const receptionistForm = useCreateReceptionist();
+
+  const activeForm = formRole === "doctor" ? doctorForm : receptionistForm;
 
   const { register, handleSubmit, errors, loading, watch } = activeForm as any; //any duzgun deyil eslinde type olmadir ama helelik bele yaz.
 
-  const isPatient = role === "Patient";
-  const isStaff = role === "Doctor" || role === "Receptionist" || role === "";
+  const isStaff =
+    formRole === "doctor" || formRole === "receptionist" || formRole === "";
 
   const password = watch("password");
   const { departments } = useDepartments();
@@ -41,10 +41,10 @@ export default function SignUpForm() {
       </div>
 
       <div className="text-white flex flex-col items-center gap-4 ">
-        <p className="text-white text-4xl  font-bold ">Create an account</p>
+        <p className="text-white text-4xl  font-bold ">{t("createUser.subtitle")}</p>
       </div>
 
-      {/* ================= PATIENT ================= */}
+      {/* ================= PATIENT =================
       {isPatient && (
         <>
           <AuthInput
@@ -71,31 +71,33 @@ export default function SignUpForm() {
             error={errors.fin?.message}
           />
         </>
-      )}
+      )} */}
 
       {/* ================= STAFF ================= */}
 
       {isStaff && (
         <>
           <AuthInput
-            label="Full Name"
+            label={t("createUser.fields.fullName")}
             type="text"
-            {...register("fullName", { required: "Full Name is required" })}
-            placeholder="Enter your name"
+            {...register("fullName", {
+              required: t("createUser.validation.fullNameRequired"),
+            })}
+            placeholder={t("createUser.placeholders.fullName")}
             error={errors.fullName?.message}
           />
 
           <AuthInput
-            label="Email"
+            label={t("createUser.fields.email")}
             type="email"
             {...register("email", {
-              required: "Email is required",
+              required: t("createUser.validation.emailRequired"),
               pattern: {
                 value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                message: "Invalid email format",
+                message: t("createUser.validation.invalidEmail"),
               },
             })}
-            placeholder="Enter your email"
+            placeholder={t("createUser.placeholders.email")}
             error={errors.email?.message}
           />
         </>
@@ -104,9 +106,9 @@ export default function SignUpForm() {
       {/* ================= COMMON ================= */}
 
       <AuthInput
-        label="Phone"
+        label={t("createUser.fields.phone")}
         {...register("phone", {
-          required: "Phone is required",
+          required: t("createUser.validation.phoneRequired"),
         })}
         placeholder="--- -- --- -- --"
         onChange={(e) => {
@@ -125,22 +127,29 @@ export default function SignUpForm() {
       />
 
       <div className="flex flex-col gap-1 w-[80%]">
-        <label className="text-white/90 font-bold">Role</label>
+        <label className="text-white/90 font-bold">
+          {" "}
+          {t("createUser.fields.role")}
+        </label>
 
         <select
-          value={role}
-          onChange={(e) => setRole(e.target.value as any)}
+          value={formRole}
+          onChange={(e) => setFormRole(e.target.value as any)}
           className="px-4 py-3 rounded-lg bg-white/90
           text-black text-base font-medium
           placeholder:text-gray-400 placeholder:text-md
           focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:placeholder:text-transparent shadow-xl border border-white/20"
         >
           <option value="" disabled>
-            Select Role
+            {t("createUser.placeholders.role")}
           </option>
-          <option value="Receptionist">Receptionist</option>
-          <option value="Doctor">Doctor</option>
-          <option value="Patient">Patient</option>
+          {authRole === "admin" && (
+            <option value="receptionist">
+              {" "}
+              {t("createUser.roles.receptionist")}
+            </option>
+          )}
+          <option value="doctor"> {t("createUser.roles.doctor")}</option>
         </select>
       </div>
 
@@ -149,39 +158,43 @@ export default function SignUpForm() {
       {isStaff && (
         <>
           <PasswordInput
-            label="Password"
+            label={t("createUser.fields.password")}
             {...register("password", {
-              required: "Password is required",
+              required: t("createUser.validation.passwordRequired"),
               minLength: {
                 value: 8,
-                message: "Password must be at least 8 characters long",
+                message: t("createUser.validation.passwordMin"),
               },
             })}
-            placeholder="Enter your password"
+            placeholder={t("createUser.placeholders.password")}
             error={errors.password?.message}
           />
 
           <PasswordInput
-            label="Confirm Password"
+            label={t("createUser.fields.confirmPassword")}
             {...register("confirmPassword", {
-              required: "Please confirm your password",
+              required: t("createUser.validation.confirmPasswordRequired"),
               validate: (value) =>
-                value === password || "Passwords do not match",
+                value === password ||
+                t("createUser.validation.passwordMismatch"),
             })}
-            placeholder="Confirm password"
+            placeholder={t("createUser.placeholders.confirmPassword")}
             error={errors.confirmPassword?.message}
           />
         </>
       )}
       {/* ================= DOCTOR ================= */}
-      {role === "Doctor" && (
+      {formRole === "doctor" && (
         <>
           <div className="flex flex-col gap-1 w-[80%]">
-            <label className="text-white/90 font-bold">Department</label>
+            <label className="text-white/90 font-bold">
+              {" "}
+              {t("createUser.fields.department")}
+            </label>
 
             <select
               {...register("departmentId", {
-                required: "Department is required",
+                required: t("createUser.validation.departmentRequired"),
               })}
               defaultValue=""
               className="px-4 py-3 rounded-lg bg-white/90
@@ -190,7 +203,7 @@ export default function SignUpForm() {
           focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:placeholder:text-transparent shadow-xl border border-white/20"
             >
               <option value="" disabled>
-                Select Deparment
+                {t("createUser.placeholders.department")}
               </option>
 
               {departments.map((d: any) => (
@@ -234,7 +247,7 @@ export default function SignUpForm() {
 
       {/* ================= PATIENT EXTRA ================= */}
 
-      {isPatient && (
+      {/* {isPatient && (
         <>
           <AuthInput
             label="Address"
@@ -308,7 +321,7 @@ export default function SignUpForm() {
             error={errors.allergies?.message}
           />
         </>
-      )}
+      )} */}
 
       <div className="w-[80%] mt-3">
         <button
@@ -316,7 +329,9 @@ export default function SignUpForm() {
           disabled={loading}
           className="w-full py-3 bg-cyan-500 hover:bg-cyan-600 transition-colors duration-800 text-white font-semibold rounded-2xl"
         >
-          {loading ? "Loading..." : "Sign Up"}
+          {loading
+            ? t("createUser.actions.loading")
+            : t("createUser.actions.submit")}
           {/* Sign Up */}
         </button>
       </div>
@@ -324,4 +339,40 @@ export default function SignUpForm() {
   );
 }
 
+//burda useAuth isletmeliyik elsinde bele yox.ama useAuth sonradan elave olundu deye deyismek istemirem.
 
+//role ucun errors islet necese
+
+//qan qruplari duzgun gorsenir onu sorus.
+
+//receptinosit departmentleri gormelidir?
+
+//url ve ad auth/sign-up olsun yoxsa create user bele bir sey?(deyisdim desktopda sekili de var ve muellim ile de danis)
+
+// before i change to create user.jpg
+
+//patients.jpg
+
+// 1. Auth (login sonrası)
+// user daxil oldu → role = admin
+
+// 👉 məqsəd:
+
+// kimdir?
+
+// ➡️ auth ✔
+
+// 2. Admin create zamanı
+// admin → yeni user yaradır → role seçir
+
+// 👉 məqsəd:
+
+// bu user nə olacaq?
+
+// ➡️ bu artıq business logic-dir
+
+// Auth role → mövcud user haqqında məlumat
+// Create role → yeni user üçün təyin edilir
+
+
+//json fayllarinda createUser icinde title ve subtile adlari duz deyil deyis

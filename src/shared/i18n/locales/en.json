@@ -1,37 +1,85 @@
-{
-  "app": {
-    "name": "MedFlow",
-    "subtitle": "Medical Management System"
-  },
-  "menu": {
-    "title": "MENU"
-  },
-  "departments": {
-    "title": "Departments",
-    "add": "Add Department",
-    "edit": "Edit Department",
-    "updated": "\"{{name}}\" department updated successfully.",
-    "name": "Department Name",
-    "namePlaceholder": "Enter department name",
-    "id": "ID",
-    "empty": "No departments available"
-  },
-  "common": {
-    "delete": "Delete",
-    "edit": "Edit",
-    "view": "View",
-    "save": "Save",
-    "cancel": "Cancel",
-    "update": "Update",
-    "updating": "Updating..."
-  },
-  "errors": {
-    "required": "Name is required",
-    "loadFailed": "Failed to load data",
-    "updateFailed": "Update failed",
-    "invalidId": "Invalid department ID"
-  },
-    "auth": {
-    "signup": "Sign Up"
+  {
+    "app": {
+      "name": "MedFlow",
+      "subtitle": "Medical Management System"
+    },
+    "menu": {
+      "title": "MENU"
+    },
+    "departments": {
+      "title": "Departments",
+      "add": "Add Department",
+      "edit": "Edit Department",
+      "updated": "\"{{name}}\" department updated successfully.",
+      "name": "Department Name",
+      "namePlaceholder": "Enter department name",
+      "id": "ID",
+      "empty": "No departments available"
+    },
+    "common": {
+      "delete": "Delete",
+      "edit": "Edit",
+      "view": "View",
+      "save": "Save",
+      "cancel": "Cancel",
+      "update": "Update",
+      "updating": "Updating..."
+    },
+    "errors": {
+      "required": "Name is required",
+      "loadFailed": "Failed to load data",
+      "updateFailed": "Update failed",
+      "invalidId": "Invalid department ID"
+    },
+
+ "createUser": {
+    "title": "Create User",
+    "subtitle": "Create an account", 
+
+    "fields": {
+      "fullName": "Full Name",
+      "email": "Email",
+      "phone": "Phone",
+      "password": "Password",
+      "confirmPassword": "Confirm Password",
+      "department": "Department",
+      "role": "Role"
+    },
+
+    "placeholders": {
+      "fullName": "Enter your name",
+      "email": "Enter your email",
+      "password": "Enter your password",
+      "confirmPassword": "Confirm password",
+      "role": "Select Role",
+      "department": "Select Department"
+    },
+
+    "roles": {
+      "doctor": "Doctor",
+      "receptionist": "Receptionist"
+    },
+
+    "validation": {
+      "fullNameRequired": "Full Name is required",
+      "emailRequired": "Email is required",
+      "invalidEmail": "Invalid email format",
+      "phoneRequired": "Phone is required",
+      "passwordRequired": "Password is required",
+      "passwordMin": "Password must be at least 8 characters long",
+      "confirmPasswordRequired": "Please confirm your password",
+      "passwordMismatch": "Passwords do not match",
+      "departmentRequired": "Department is required"
+    },
+
+    "actions": {
+      "submit": "Create User",
+      "loading": "Creating..."
+    }
   }
 }
+  
+
+
+
+

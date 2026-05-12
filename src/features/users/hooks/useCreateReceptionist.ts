@@ -1,8 +1,8 @@
 import { useForm } from "react-hook-form";
-import type { CreateReceptionistRequest } from "../types/staff.types";
-import useStaff from "./useStaff";
+import type { CreateReceptionistRequest } from "../types/users.types";
+import useStaff from "./useUsers";
 
-export const useCreateReceptionistForm = () => {
+export const useCreateReceptionist = () => {
   const { createReceptionist, creatingReceptionist } = useStaff();
 
   const {

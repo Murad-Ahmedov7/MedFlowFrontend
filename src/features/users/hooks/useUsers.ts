@@ -6,7 +6,7 @@
 // } from "../types/staff.types";
 
 import { useMutation } from "@tanstack/react-query";
-import { staffService } from "../services/staff.service";
+import { userService } from "../services/user.service";
 
 // export default function useStaff() {
 //   const queryClient = useQueryClient();
@@ -35,13 +35,13 @@ import { staffService } from "../services/staff.service";
 // }
 
 
-export default function useStaff() {
+export default function useUsers() {
   const createDoctorMutation = useMutation({
-    mutationFn: staffService.createDoctor,
+    mutationFn: userService.createDoctor,
   });
 
   const createReceptionistMutation = useMutation({
-    mutationFn: staffService.createReceptionist,
+    mutationFn: userService.createReceptionist,
   });
 
   return {

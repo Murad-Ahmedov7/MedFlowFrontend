@@ -28,13 +28,15 @@
 //   };
 // };
 
-
 import { useMutation } from "@tanstack/react-query";
 import type { SignInRequest } from "../types/auth.types";
 import { signIn } from "../services/authService";
 import { tokenService } from "@/services/tokenService";
+import { jwtDecode } from "jwt-decode";
+import { useAuth } from "../context/AuthContext";
 
 export const useSignIn = () => {
+  const { setRole } = useAuth();
   // console.log("HOOK: 1. başladı");
   const mutation = useMutation({
     mutationFn: (data: SignInRequest) => signIn(data),
@@ -43,6 +45,19 @@ export const useSignIn = () => {
       console.log("HOOK: 2. SUCCESS gəldi");
       tokenService.setToken(res.token);
       tokenService.setRefreshToken(res.refreshToken);
+
+      try {
+        const decoded: any = jwtDecode(res.token);
+
+        const role =
+          decoded[
+            "http://schemas.microsoft.com/ws/2008/06/identity/claims/role"
+          ]?.toLowerCase() ?? null;
+
+        setRole(role); // 🔥 BU SƏNİN PROBLEMİNİ HƏLL EDİR
+      } catch {
+        setRole(null);
+      }
     },
   });
 
@@ -52,4 +67,3 @@ export const useSignIn = () => {
     error: mutation.error,
   };
 };
-
