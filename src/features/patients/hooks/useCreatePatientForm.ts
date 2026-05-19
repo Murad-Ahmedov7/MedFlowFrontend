@@ -1,9 +1,9 @@
 import { useForm } from "react-hook-form";
-import { useCreatePatient } from "./usePatients";
-import type { CreatePatientRequest } from "../types/patient.types";
+import { usePatients } from "./usePatients";
+import type { AddPatientRequest } from "../types/patient.types";
 
 export const useCreatePatientForm = () => {
-  const { createPatient, creatingPatient } = useCreatePatient();
+  const { addPatient } = usePatients();
 
   const {
     register,
@@ -11,14 +11,14 @@ export const useCreatePatientForm = () => {
     watch,
     reset,
     formState: { errors },
-  } = useForm<CreatePatientRequest>({ mode: "onChange" });
+  } = useForm<AddPatientRequest>({ mode: "onChange" });
 
-  const onSubmit = async (data: CreatePatientRequest) => {
+  const onSubmit = async (data: AddPatientRequest) => {
     try {
       if (!data.address) delete data.address;
       if (!data.allergies) delete data.allergies;
 
-      await createPatient(data);
+      await addPatient(data);
       alert(` Patient ${data.firstName} ${data.lastName} has been created`);
       reset();
     } catch (err: any) {
@@ -30,7 +30,6 @@ export const useCreatePatientForm = () => {
     register,
     handleSubmit: handleSubmit(onSubmit),
     errors,
-    loading: creatingPatient,
     watch,
     reset,
   };

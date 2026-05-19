@@ -13,6 +13,7 @@ import {
   FaChevronRight,
   FaChevronUp,
   FaUserPlus,
+  FaHospitalUser,
 } from "react-icons/fa";
 import { NavLink, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -32,13 +33,16 @@ export default function Sidebar({ isSidebarOpen }: SidebarProps) {
 
   const { role } = useAuth();
 
-  useEffect(() => {
-    if (location.pathname.startsWith("/departments/new")) {
-      setOpenMenu("departments.title");
-    } else {
-      setOpenMenu(null);
-    }
-  }, [location.pathname]);
+useEffect(() => {
+  if (!location.pathname.endsWith("/new")) {
+    setOpenMenu(null);
+  }
+}, [location.pathname]);
+const autoOpenMenu =
+  location.pathname.endsWith("/new")
+    ? `${location.pathname.split("/")[1]}.title`
+    : null;
+
 
   // const menu = [
   //   // {
@@ -82,6 +86,7 @@ export default function Sidebar({ isSidebarOpen }: SidebarProps) {
   //   // },
   // ];
 
+
   const menu = [
     {
       titleKey: "menu.title",
@@ -91,30 +96,52 @@ export default function Sidebar({ isSidebarOpen }: SidebarProps) {
               {
                 labelKey: "createUser.title",
                 icon: <FaUserPlus />,
-                path: "users/create",
+                path: "/users/create",
               },
             ]
           : []),
+
         {
           labelKey: "departments.title",
           icon: <FaBuilding />,
           path: "/departments",
+
           ...(role === "admin" && {
             children: [
-              { labelKey: "departments.add", path: "/departments/new" },
+              {
+                labelKey: "departments.add",
+                path: "/departments/new",
+              },
             ],
           }),
+        },
+
+        {
+          labelKey: "patients.title",
+          icon: <FaUserInjured />,
+          path: "/patients",
+
+          ...(role === "admin" || role === "receptionist"
+            ? {
+                children: [
+                  {
+                    labelKey: "patients.add",
+                    path: "/patients/new",
+                  },
+                ],
+              }
+            : {}),
         },
       ],
     },
   ];
-
   return (
     <aside
       className={`
     bg-gray-200/40 min-h-screen border-r border-gray-300/80 shadow-sm flex flex-col
     transition-all duration-300 ease-in-out
-    ${isSidebarOpen ? "w-80" : "w-20"}
+    
+    ${isSidebarOpen ? "min-w-70" : "w-20"}
   `}
     >
       {/* Logo */}
@@ -127,7 +154,7 @@ export default function Sidebar({ isSidebarOpen }: SidebarProps) {
           />
 
           {isSidebarOpen && (
-            <div>
+            <div className="max-w-60">
               <h1 className="text-lg font-bold text-gray-800">
                 {t("app.name")}
               </h1>
@@ -150,7 +177,12 @@ export default function Sidebar({ isSidebarOpen }: SidebarProps) {
 
             <div className="space-y-1 ">
               {section.items.map((item, idx) => {
-                const isOpen = openMenu === item.labelKey;
+                const isOpen =
+                  location.pathname.startsWith(item.path) &&
+                  (
+                    openMenu === item.labelKey ||
+                    autoOpenMenu === item.labelKey
+                  );
 
                 if (item.children) {
                   return (
@@ -282,6 +314,15 @@ export default function Sidebar({ isSidebarOpen }: SidebarProps) {
   );
 }
 
+
+//  burda problem odu ki patientdeki arrow-a bassam indi departmensdeki submenu baglanar ama bu duz deyil de duzelt
+///sidebariiiiiiiiii baglaytanda o tablarin adi gorunur 1 saniyelik onu da duzelt(yeni hoverlari)
+////////////////
+
+/////////aside-da olan min width var deye smooth baglanmir.(ve sidebari acib baglayanda o hover olan yazilar gorsenir qisa muddeltlik)
+
+////////////////errror ve forbidden mesajlarini da tercume et(dialog kimi cixan)......................
+
 // // src/
 // //   layouts/
 //     // MainLayout.tsx
@@ -292,3 +333,5 @@ export default function Sidebar({ isSidebarOpen }: SidebarProps) {
 //     //   sidebar.config.ts
 
 // //lazim olsa fayllara bol.
+
+

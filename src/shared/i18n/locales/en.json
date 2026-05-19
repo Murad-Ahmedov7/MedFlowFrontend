@@ -16,6 +16,62 @@
     "id": "ID",
     "empty": "No departments available"
   },
+
+  "patients": {
+    "title": "Patients",
+    "add": "Add Patient",
+    "edit": "Edit Patient",
+    "empty": "No patients available",
+
+    "fields": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "fin": "FIN",
+      "phone": "Phone",
+      "address": "Address",
+      "birthDate": "Birth Date",
+      "gender": "Gender",
+      "bloodGroup": "Blood Group",
+      "allergies": "Allergies"
+    },
+    "validation": {
+      "firstNameRequired": "First name is required",
+      "lastNameRequired": "Last name is required",
+
+      "finRequired": "FIN is required",
+      "finLength": "FIN must be 7 characters",
+      "finFormat": "FIN must contain letters and digits",
+
+      "phoneRequired": "Phone number is required",
+
+      "birthDateRequired": "Birth date is required",
+      "birthDatePast": "Birth date cannot be in the future",
+
+      "genderRequired": "Gender is required",
+
+      "bloodGroupRequired": "Blood group is required"
+    },
+
+    "placeholders": {
+      "firstName": "Enter first name",
+      "lastName": "Enter last name",
+      "fin": "Enter FIN",
+      "phone": "050-123-45-67",
+      "address": "Enter address",
+      "allergies": "Enter allergies"
+    },
+
+    "selectDefaults": {
+      "gender": "Select gender",
+      "bloodGroup": "Select blood group"
+    },
+
+    "genderOptions": {
+      "male": "Male",
+      "female": "Female"
+    }
+  },
+
   "common": {
     "delete": "Delete",
     "edit": "Edit",

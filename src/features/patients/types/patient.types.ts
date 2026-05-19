@@ -1,27 +1,33 @@
 export const Gender = {
-  Male: 1,
-  Female: 2,
+  Male: "Male",
+  Female: "Female",
 } as const;
 
-export type Gender = (typeof Gender)[keyof typeof Gender];
+export type Gender =
+  (typeof Gender)[keyof typeof Gender];
 
 
 export const BloodGroup = {
-  Unknown: 0,
-  OPlus: 1,
-  OMinus: 2,
-  APlus: 3,
-  AMinus: 4,
-  BPlus: 5,
-  BMinus: 6,
-  ABPlus: 7,
-  ABMinus: 8,
+  Unknown: "Unknown",
+
+  OPlus: "OPlus",
+  OMinus: "OMinus",
+
+  APlus: "APlus",
+  AMinus: "AMinus",
+
+  BPlus: "BPlus",
+  BMinus: "BMinus",
+
+  ABPlus: "ABPlus",
+  ABMinus: "ABMinus",
 } as const;
 
-export type BloodGroup = (typeof BloodGroup)[keyof typeof BloodGroup];
+export type BloodGroup =
+  (typeof BloodGroup)[keyof typeof BloodGroup];
 
 
-export interface CreatePatientRequest {
+export interface AddPatientRequest {
   firstName: string;
   lastName: string;
   fin: string;
@@ -33,6 +39,32 @@ export interface CreatePatientRequest {
   allergies?: string;
 }
 
-export interface CreatePatientResponse{
+export interface UpdatePatientRequest {
+  firstName: string;
+  lastName: string;
+  fin: string;
+  phone: string;
+  address?: string;
+  birthDate: string;
+  gender: Gender;
+  bloodGroup: BloodGroup;
+  allergies?: string;
+}
+
+export interface AddPatientResponse {
     id:string
+}
+
+export interface PatientResponse {
+  id: string;
+  firstName: string;
+  lastName: string;
+  fin: string;
+  phone: string;
+  address?: string;
+  birthDate: string;
+  gender: Gender;
+  bloodGroup: BloodGroup;
+  allergies?: string;
+  createdAt: string;
 }

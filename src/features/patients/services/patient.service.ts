@@ -1,9 +1,11 @@
 import { apiClient } from "@/services/apiClient";
 import type {
-  CreatePatientRequest,
-  CreatePatientResponse,
+  AddPatientRequest,
+  AddPatientResponse,
+  PatientResponse,
+  UpdatePatientRequest,
 } from "../types/patient.types";
-import type { ApiResponse } from "@/types/api.types";
+import type { ApiResponse, PaginatedResponse } from "@/types/api.types";
 
 const handleApiError = (err: any): never => {
   const errData = err.response?.data;
@@ -37,9 +39,9 @@ const handleApiError = (err: any): never => {
   throw new Error("Naməlum bir səhv baş verdi");
 };
 
-export const createPatient = async (data: CreatePatientRequest) => {
+export const addPatient = async (data: AddPatientRequest) => {
   try {
-    const res = await apiClient.post<ApiResponse<CreatePatientResponse>>(
+    const res = await apiClient.post<ApiResponse<AddPatientResponse>>(
       "/patients",
       data,
     );
@@ -54,3 +56,34 @@ export const createPatient = async (data: CreatePatientRequest) => {
   }
 };
 
+export const updatePatient = async (id: string, data: UpdatePatientRequest) => {
+  try {
+    const res = await apiClient.put<ApiResponse<PatientResponse>>(
+      `/patients/${id}`,
+      data,
+    );
+    if (!res.data.isSuccess)
+      throw new Error(res.data.errors?.[0] || "Update Patient failed");
+
+    return res.data.data;
+  } catch (err) {
+    handleApiError(err);
+  }
+};
+
+export const getPatient = async (id: string) => {
+  const res = await apiClient.get<ApiResponse<PatientResponse>>(
+    `/patients/${id}`,
+  );
+  return res.data.data;
+};
+
+export const getPatients = async () => {
+  const res =
+    await apiClient.get<PaginatedResponse<PatientResponse>>("/patients");
+  return res.data.data;
+};
+
+export const deletePatient = async (id: string) => {
+  await apiClient.delete<ApiResponse<PatientResponse>>(`/patients/${id}`);
+};

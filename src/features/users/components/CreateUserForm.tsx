@@ -2,8 +2,6 @@ import AuthInput from "@/features/auth/components/AuthInput";
 import PasswordInput from "@/features/auth/components/PasswordInput";
 import { useEffect, useState } from "react";
 import useDepartments from "@/features/departments/hooks/useDepartments";
-import { useCreatePatientForm } from "@/features/patients/hooks/useCreatePatientForm";
-import { BloodGroup, Gender } from "@/features/patients/types/patient.types";
 import { useAuth } from "@/features/auth/context/AuthContext";
 import { useCreateDoctor } from "../hooks/useCreateDoctor";
 import { useCreateReceptionist } from "../hooks/useCreateReceptionist";
@@ -44,34 +42,7 @@ export default function CreateUserForm() {
         <p className="text-white text-4xl  font-bold ">{t("createUser.subtitle")}</p>
       </div>
 
-      {/* ================= PATIENT =================
-      {isPatient && (
-        <>
-          <AuthInput
-            label=" First Name"
-            type="text"
-            {...register("firstName", { required: " First Name is required" })}
-            placeholder="Enter your first name"
-            error={errors.firstname?.message}
-          />
 
-          <AuthInput
-            label=" Last Name"
-            type="text"
-            {...register("lastName", { required: " Last Name is required" })}
-            placeholder="Enter your last name"
-            error={errors.lastname?.message}
-          />
-
-          <AuthInput
-            label=" Fin"
-            type="text"
-            {...register("fin", { required: " Fin is required" })}
-            placeholder="Enter your Fin"
-            error={errors.fin?.message}
-          />
-        </>
-      )} */}
 
       {/* ================= STAFF ================= */}
 
@@ -245,83 +216,6 @@ export default function CreateUserForm() {
         </>
       )}
 
-      {/* ================= PATIENT EXTRA ================= */}
-
-      {/* {isPatient && (
-        <>
-          <AuthInput
-            label="Address"
-            type="text"
-            {...register("address")}
-            placeholder="Enter your Address"
-            error={errors.address?.message}
-          />
-          <AuthInput
-            label="Birthdate"
-            type="date"
-            {...register("birthdate", { required: "Birthdate is required" })}
-            error={errors.birthdate?.message}
-          />
-
-          <div className="flex flex-col gap-1 w-[80%]">
-            <label className="text-white/90 font-bold">Gender</label>
-
-            <select
-              {...register("gender", {
-                required: "Gender is required",
-                valueAsNumber: true,
-              })}
-              className="px-4 py-3 rounded-lg bg-white/90
-              text-black text-base font-medium
-              placeholder:text-gray-400 placeholder:text-md
-              focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:placeholder:text-transparent shadow-xl border border-white/20"
-            >
-              <option value="" disabled>
-                Select Gender
-              </option>
-              <option value={Gender.Male}>Male</option>
-              <option value={Gender.Female}>Female</option>
-            </select>
-          </div>
-
-          <div className="flex flex-col gap-1 w-[80%]">
-            <label className="text-white/90 font-bold">Blood Group</label>
-
-            <select
-              {...register("bloodGroup", {
-                required: "Blood group is required",
-                valueAsNumber: true,
-              })}
-              className="px-4 py-3 rounded-lg bg-white/90
-              text-black text-base font-medium
-              placeholder:text-gray-400 placeholder:text-md
-              focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:placeholder:text-transparent shadow-xl border border-white/20"
-            >
-              <option value="" disabled>
-                Select Blood Group
-              </option>
-
-              <option value={BloodGroup.Unknown}>Unknown</option>
-              <option value={BloodGroup.OPlus}>O+</option>
-              <option value={BloodGroup.OMinus}>O-</option>
-              <option value={BloodGroup.APlus}>A+</option>
-              <option value={BloodGroup.AMinus}>A-</option>
-              <option value={BloodGroup.BPlus}>B+</option>
-              <option value={BloodGroup.BMinus}>B-</option>
-              <option value={BloodGroup.ABPlus}>AB+</option>
-              <option value={BloodGroup.ABMinus}>AB-</option>
-            </select>
-          </div>
-
-          <AuthInput
-            label="Allergies"
-            type="text"
-            {...register("allergies")}
-            placeholder="Enter your allergies"
-            error={errors.allergies?.message}
-          />
-        </>
-      )} */}
 
       <div className="w-[80%] mt-3">
         <button

@@ -16,6 +16,72 @@
     "id": "ID",
     "empty": "Heç bir şöbə mövcud deyil"
   },
+  "patients": {
+    "title": "Pasiyentlər",
+    "add": "Pasiyent əlavə et",
+    "edit": "Pasiyenti redaktə et",
+    "empty": "Heç bir pasiyent mövcud deyil",
+
+    "fields": {
+      "firstName": "Ad",
+      "lastName": "Soyad",
+      "fin": "FIN",
+      "phone": "Telefon",
+      "address": "Ünvan",
+      "birthDate": "Doğum tarixi",
+      "gender": "Cins",
+      "bloodGroup": "Qan qrupu",
+      "allergies": "Allergiyalar"
+    },
+
+
+
+
+    "validation": {
+      "firstNameRequired": "Ad tələb olunur",
+
+      "lastNameRequired": "Soyad tələb olunur",
+
+      "finRequired": "FIN tələb olunur",
+      "finLength": "FIN 7 simvol olmalıdır",
+      "finFormat": "FIN hərf və rəqəmlərdən ibarət olmalıdır",
+
+      "phoneRequired": "Telefon nömrəsi tələb olunur",
+
+      "birthDateRequired": "Doğum tarixi tələb olunur",
+      "birthDatePast": "Doğum tarixi gələcək tarix ola bilməz",
+
+      "genderRequired": "Cins tələb olunur",
+
+      "bloodGroupRequired": "Qan qrupu tələb olunur"
+    },
+    
+    "placeholders": {
+      "firstName": "Ad daxil edin",
+      "lastName": "Soyad daxil edin",
+      "fin": "FIN daxil edin",
+      "phone": "050-123-45-67",
+      "address": "Ünvan daxil edin",
+      "allergies": "Allergiyaları daxil edin"
+    },
+
+    "selectDefaults": {
+      "gender": "Cins seçin",
+      "bloodGroup": "Qan qrupu seçin"
+    },
+
+    "genderOptions": {
+      "male": "Kişi",
+      "female": "Qadın"
+    }
+
+
+
+
+
+
+
+  },
   "common": {
     "delete": "Sil",
     "edit": "Düzəliş et",

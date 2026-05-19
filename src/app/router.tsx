@@ -11,6 +11,9 @@ import UpdateDepartmentPage from "@/pages/departments/edit/UpdateDepartmentPage"
 import AddDepartmentPage from "@/pages/departments/new/AddDepartmentPage";
 import RoleProtectedRoute from "@/shared/routes/RoleProtectedRoute";
 import CreateUserPage from "@/pages/users/create/CreateUserPage";
+import PatientsPage from "@/pages/patients/PatientsPage";
+import AddPatientPage from "@/pages/patients/new/AddPatientPage";
+import UpdatePatientPage from "@/pages/patients/edit/UpdatePatientPage";
 
 export const router = createBrowserRouter([
   {
@@ -31,6 +34,20 @@ export const router = createBrowserRouter([
         element: <MainLayout />,
         children: [
           { index: true, element: <Navigate to="/departments" /> },
+          
+          {
+            path: "/users",
+            children: [
+              {
+                path: "create",
+                element: (
+                  <RoleProtectedRoute roles={["admin", "receptionist"]}>
+                    <CreateUserPage/>
+                  </RoleProtectedRoute>
+                ),
+              },
+            ],
+          },
 
           {
             path: "/departments",
@@ -56,20 +73,31 @@ export const router = createBrowserRouter([
               },
             ],
           },
-
-          {
-            path: "/users",
+           {
+            path: "/patients",
             children: [
+              { index: true, element: <PatientsPage /> },
+
               {
-                path: "create",
-                element: (
+                path:"new",
+                element:(
                   <RoleProtectedRoute roles={["admin", "receptionist"]}>
-                    <CreateUserPage/>
+                    <AddPatientPage/>
+                  </RoleProtectedRoute>
+                )
+              },
+              {
+                path: "edit/:id",
+                element: (
+                <RoleProtectedRoute roles={["admin", "receptionist"]}>
+                    <UpdatePatientPage />
                   </RoleProtectedRoute>
                 ),
               },
             ],
           },
+
+
         ],
       },
     ],

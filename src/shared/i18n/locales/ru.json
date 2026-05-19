@@ -16,6 +16,61 @@
     "id": "ID",
     "empty": "Нет доступных отделов"
   },
+  "patients": {
+    "title": "Пациенты",
+    "add": "Добавить пациента",
+    "edit": "Редактировать пациента",
+    "empty": "Нет доступных пациентов",
+    "fields": {
+      "firstName": "Имя",
+      "lastName": "Фамилия",
+      "fin": "FIN",
+      "phone": "Телефон",
+      "address": "Адрес",
+      "birthDate": "Дата рождения",
+      "gender": "Пол",
+      "bloodGroup": "Группа крови",
+      "allergies": "Аллергии"
+    },
+
+    "validation": {
+      "firstNameRequired": "Имя обязательно",
+
+      "lastNameRequired": "Фамилия обязательна",
+
+      "finRequired": "FIN обязателен",
+      "finLength": "FIN должен содержать 7 символов",
+      "finFormat": "FIN должен содержать буквы и цифры",
+
+      "phoneRequired": "Телефон обязателен",
+
+      "birthDateRequired": "Дата рождения обязательна",
+      "birthDatePast": "Дата рождения не может быть в будущем",
+
+      "genderRequired": "Пол обязателен",
+
+      "bloodGroupRequired": "Группа крови обязательна"
+    },
+    "placeholders": {
+      "firstName": "Введите имя",
+      "lastName": "Введите фамилию",
+      "fin": "Введите FIN",
+      "phone": "050-123-45-67",
+      "address": "Введите адрес",
+      "allergies": "Введите аллергии"
+    },
+
+    "selectDefaults": {
+      "gender": "Выберите пол",
+      "bloodGroup": "Выберите группу крови"
+    },
+
+    "genderOptions": {
+      "male": "Мужской",
+      "female": "Женский"
+    }
+  },
+
   "common": {
     "delete": "Удалить",
     "edit": "Редактировать",
