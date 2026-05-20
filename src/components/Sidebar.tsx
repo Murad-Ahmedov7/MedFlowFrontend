@@ -15,10 +15,12 @@ import {
   FaUserPlus,
   FaHospitalUser,
 } from "react-icons/fa";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "@/features/auth/context/AuthContext";
+import { FiLogOut } from "react-icons/fi";
+import { tokenService } from "@/services/tokenService";
 
 interface SidebarProps {
   isSidebarOpen: boolean;
@@ -32,6 +34,19 @@ export default function Sidebar({ isSidebarOpen }: SidebarProps) {
   const { t } = useTranslation();
 
   const { role } = useAuth();
+
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+  const confirmed = confirm(
+    "Are you sure you want to logout?",
+  );
+
+  if (!confirmed) return;
+
+  tokenService.clear();
+  navigate("/auth/sign-in");
+};
 
 useEffect(() => {
   if (!location.pathname.endsWith("/new")) {
@@ -303,12 +318,40 @@ const autoOpenMenu =
                         <span>{t(item.labelKey)}</span>
                       )}
                     </NavLink>
+
+                    
                   </div>
                 );
               })}
+              
+              
             </div>
           </div>
         ))}
+      </div>
+
+      {/* LOGOUT */}
+      <div className="p-4 mt-auto ">
+        <button
+        onClick={handleLogout}
+          className="
+            flex items-center gap-3
+            text-red-500
+            hover:bg-red-50
+            px-4 py-3
+            rounded-xl
+            transition
+            w-full
+          "
+        >
+          <FiLogOut size={20} />
+
+          {isSidebarOpen && (
+            <span className="font-medium">
+              Logout
+            </span>
+          )}
+        </button>
       </div>
     </aside>
   );
@@ -335,3 +378,4 @@ const autoOpenMenu =
 // //lazim olsa fayllara bol.
 
 
+//lazim olsa import da yaz.

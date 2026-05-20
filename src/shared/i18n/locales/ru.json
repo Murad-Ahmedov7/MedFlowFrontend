@@ -78,7 +78,8 @@
     "save": "Сохранить",
     "cancel": "Отмена",
     "update": "Обновить",
-    "updating": "Обновление..."
+    "updating": "Обновление...",
+     "export": "Экспорт"
   },
   "pagination": {
     "previous": "Предыдущая",

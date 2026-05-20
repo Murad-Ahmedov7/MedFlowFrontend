@@ -89,7 +89,8 @@
     "save": "Yadda saxla",
     "cancel": "Ləğv et",
     "update": "Yenilə",
-    "updating": "Yenilənir..."
+    "updating": "Yenilənir...",
+      "export": "Eksport et"
   },
   "pagination": {
     "previous": "Əvvəlki",

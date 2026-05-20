@@ -79,7 +79,8 @@
     "save": "Save",
     "cancel": "Cancel",
     "update": "Update",
-    "updating": "Updating..."
+    "updating": "Updating...",
+    "export": "Export"
   },
 
   "pagination": {
