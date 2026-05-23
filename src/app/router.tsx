@@ -14,6 +14,7 @@ import CreateUserPage from "@/pages/users/create/CreateUserPage";
 import PatientsPage from "@/pages/patients/PatientsPage";
 import AddPatientPage from "@/pages/patients/new/AddPatientPage";
 import UpdatePatientPage from "@/pages/patients/edit/UpdatePatientPage";
+import SettingsPage from "@/pages/settings/SettingsPage";
 
 export const router = createBrowserRouter([
   {
@@ -96,6 +97,13 @@ export const router = createBrowserRouter([
               },
             ],
           },
+
+          {
+            path:"/settings",
+            children:[
+              {index:true,element:<SettingsPage/>}
+            ]
+          }
 
 
         ],

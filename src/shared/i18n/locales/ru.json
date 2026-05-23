@@ -71,6 +71,49 @@
     }
   },
 
+  "settings": {
+  "title": "Настройки",
+  "description": "Управляйте аккаунтом и настройками безопасности",
+
+  "profile": {
+    "title": "Информация профиля",
+    "subtitle": "Личная информация",
+
+    "fields": {
+      "email": "Электронная почта",
+      "role": "Роль"
+    }
+  },
+
+"password": {
+  "title": "Изменить пароль",
+  "subtitle": "Обновите ваш пароль",
+
+  "fields": {
+    "currentPassword": "Текущий пароль",
+    "newPassword": "Новый пароль",
+    "confirmPassword": "Подтвердите новый пароль"
+  },
+
+  "actions": {
+    "submit": "Изменить пароль"
+  },
+
+  "validation": {
+    "currentPasswordRequired": "Текущий пароль обязателен",
+    "newPasswordRequired": "Новый пароль обязателен",
+    "confirmPasswordRequired": "Подтвердите пароль",
+    "passwordMismatch": "Пароли не совпадают",
+    "minLength": "Минимум 8 символов",
+    "samePassword": "Новый пароль не может совпадать с текущим"
+  }
+},
+
+  "account": {
+    "title": "Информация аккаунта"
+  }
+},
+
   "common": {
     "delete": "Удалить",
     "edit": "Редактировать",
@@ -79,7 +122,8 @@
     "cancel": "Отмена",
     "update": "Обновить",
     "updating": "Обновление...",
-     "export": "Экспорт"
+     "export": "Экспорт",
+     "logout": "Выйти"
   },
   "pagination": {
     "previous": "Предыдущая",

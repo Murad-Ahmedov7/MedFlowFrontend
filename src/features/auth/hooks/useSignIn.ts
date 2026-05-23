@@ -36,7 +36,7 @@ import { jwtDecode } from "jwt-decode";
 import { useAuth } from "../context/AuthContext";
 
 export const useSignIn = () => {
-  const { setRole } = useAuth();
+  const { setRole,setEmail } = useAuth();
   // console.log("HOOK: 1. başladı");
   const mutation = useMutation({
     mutationFn: (data: SignInRequest) => signIn(data),
@@ -55,8 +55,17 @@ export const useSignIn = () => {
           ]?.toLowerCase() ?? null;
 
         setRole(role); // 🔥 BU SƏNİN PROBLEMİNİ HƏLL EDİR
+
+        const email =
+        decoded.email ?? null;
+
+        setRole(role);
+
+        setEmail(email);
       } catch {
         setRole(null);
+        setEmail(null);
+      
       }
     },
   });

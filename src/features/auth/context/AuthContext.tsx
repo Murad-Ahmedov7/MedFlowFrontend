@@ -3,9 +3,16 @@ import { createContext, useContext } from "react";
 
 interface AuthState {
   role: string | null;
-  setRole: (role: string | null) => void; // 🔥 əlavə et
-}
+  email: string | null;
 
+  setRole: (
+    role: string | null,
+  ) => void;
+
+  setEmail: (
+    email: string | null,
+  ) => void;
+}
 export const AuthContext = createContext<AuthState | null>(null);
 
 

@@ -20,3 +20,7 @@ export interface ApiError {
 export type ErrorResponse = ApiError[]; //niye type? react native proj-a bax
 
 //buradki errorlari gelecekde islet.
+
+//istifadesinin duzgunluyu backend ile yoxla.(mes api response her endpoint ile duzfun deyil ama isleyir? niye?mes delete edende data t yoxdu ama error vermue)
+
+//data?T bele olsun ve s gptden sorus.

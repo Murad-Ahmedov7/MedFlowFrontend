@@ -72,6 +72,49 @@
     }
   },
 
+  "settings": {
+    "title": "Settings",
+    "description": "Manage your account and security settings",
+
+    "profile": {
+      "title": "Profile Information",
+      "subtitle": "Personal information",
+
+      "fields": {
+        "email": "Email",
+        "role": "Role"
+      }
+    },
+
+    "password": {
+      "title": "Change Password",
+      "subtitle": "Update your password",
+
+      "fields": {
+        "currentPassword": "Current Password",
+        "newPassword": "New Password",
+        "confirmPassword": "Confirm New Password"
+      },
+
+      "actions": {
+        "submit": "Change Password"
+      },
+
+      "validation": {
+        "currentPasswordRequired": "Current password is required",
+        "newPasswordRequired": "New password is required",
+        "confirmPasswordRequired": "Please confirm your password",
+        "passwordMismatch": "Passwords do not match",
+        "minLength": "Minimum 8 characters",
+        "samePassword": "New password cannot be same as current password"
+      }
+    },
+
+    "account": {
+      "title": "Account Information"
+    }
+  },
+
   "common": {
     "delete": "Delete",
     "edit": "Edit",
@@ -80,7 +123,8 @@
     "cancel": "Cancel",
     "update": "Update",
     "updating": "Updating...",
-    "export": "Export"
+    "export": "Export",
+     "logout": "Logout"
   },
 
   "pagination": {

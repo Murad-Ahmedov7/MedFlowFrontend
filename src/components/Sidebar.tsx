@@ -19,7 +19,7 @@ import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "@/features/auth/context/AuthContext";
-import { FiLogOut } from "react-icons/fi";
+import { FiLogOut, FiSettings } from "react-icons/fi";
 import { tokenService } from "@/services/tokenService";
 
 interface SidebarProps {
@@ -38,26 +38,22 @@ export default function Sidebar({ isSidebarOpen }: SidebarProps) {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-  const confirmed = confirm(
-    "Are you sure you want to logout?",
-  );
+    const confirmed = confirm("Are you sure you want to logout?");
 
-  if (!confirmed) return;
+    if (!confirmed) return;
 
-  tokenService.clear();
-  navigate("/auth/sign-in");
-};
+    tokenService.clear();
+    navigate("/auth/sign-in");
+  };
 
-useEffect(() => {
-  if (!location.pathname.endsWith("/new")) {
-    setOpenMenu(null);
-  }
-}, [location.pathname]);
-const autoOpenMenu =
-  location.pathname.endsWith("/new")
+  useEffect(() => {
+    if (!location.pathname.endsWith("/new")) {
+      setOpenMenu(null);
+    }
+  }, [location.pathname]);
+  const autoOpenMenu = location.pathname.endsWith("/new")
     ? `${location.pathname.split("/")[1]}.title`
     : null;
-
 
   // const menu = [
   //   // {
@@ -100,7 +96,6 @@ const autoOpenMenu =
   //   //   ],
   //   // },
   // ];
-
 
   const menu = [
     {
@@ -147,6 +142,12 @@ const autoOpenMenu =
               }
             : {}),
         },
+
+{
+  labelKey: "settings.title",
+  icon: <FiSettings />,
+  path: "/settings",
+},
       ],
     },
   ];
@@ -194,10 +195,8 @@ const autoOpenMenu =
               {section.items.map((item, idx) => {
                 const isOpen =
                   location.pathname.startsWith(item.path) &&
-                  (
-                    openMenu === item.labelKey ||
-                    autoOpenMenu === item.labelKey
-                  );
+                  (openMenu === item.labelKey ||
+                    autoOpenMenu === item.labelKey);
 
                 if (item.children) {
                   return (
@@ -318,13 +317,9 @@ const autoOpenMenu =
                         <span>{t(item.labelKey)}</span>
                       )}
                     </NavLink>
-
-                    
                   </div>
                 );
               })}
-              
-              
             </div>
           </div>
         ))}
@@ -333,7 +328,7 @@ const autoOpenMenu =
       {/* LOGOUT */}
       <div className="p-4 mt-auto ">
         <button
-        onClick={handleLogout}
+          onClick={handleLogout}
           className="
             flex items-center gap-3
             text-red-500
@@ -346,11 +341,7 @@ const autoOpenMenu =
         >
           <FiLogOut size={20} />
 
-          {isSidebarOpen && (
-            <span className="font-medium">
-              Logout
-            </span>
-          )}
+          {isSidebarOpen && <span className="font-medium">{t("common.logout")}</span>}
         </button>
       </div>
     </aside>
@@ -376,6 +367,5 @@ const autoOpenMenu =
 //     //   sidebar.config.ts
 
 // //lazim olsa fayllara bol.
-
 
 //lazim olsa import da yaz.

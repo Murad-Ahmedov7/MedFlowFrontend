@@ -25,9 +25,6 @@ type Props = {
 
 // //providers islet necese
 
-
-
-
 // export const Providers = ({ children }: Props) => {
 //   const token = tokenService.getToken();
 
@@ -45,37 +42,58 @@ type Props = {
 //     }
 //   }
 
-
 export const Providers = ({ children }: Props) => {
   const [role, setRole] = useState<string | null>(null);
+  const [email, setEmail] = useState<string | null>(null);
 
   // 🔥 decode funksiyası
-  const decodeRole = () => {
-    const token = tokenService.getToken();
 
-    if (!token) return null;
+  const decodeAuthData = () => {
+    const token =
+      tokenService.getToken();
+
+    if (!token) {
+      return {
+        role: null,
+        email: null,
+      };
+    }
 
     try {
-      const decoded: any = jwtDecode(token);
+      const decoded: any =
+        jwtDecode(token);
 
-      return (
-        decoded[
-          "http://schemas.microsoft.com/ws/2008/06/identity/claims/role"
-        ]?.toLowerCase() ?? null
-      );
+      return {
+        role:
+          decoded[
+            "http://schemas.microsoft.com/ws/2008/06/identity/claims/role"
+          ]?.toLowerCase() ?? null,
+
+        email:
+          decoded.email ?? null,
+      };
     } catch {
-      return null;
+      return {
+        role: null,
+        email: null,
+      };
     }
   };
 
-  // 🔥 App açılarkən role hesabla
   useEffect(() => {
-    setRole(decodeRole());
+    const authData =
+      decodeAuthData();
+
+    setRole(authData.role);
+    setEmail(authData.email);
   }, []);
+
 
   return (
     <QueryClientProvider client={queryClient}>
-      <AuthContext.Provider value={{ role, setRole }}>{children}</AuthContext.Provider>
+      <AuthContext.Provider value={{ role, setRole, email, setEmail }}>
+        {children}
+      </AuthContext.Provider>
     </QueryClientProvider>
   );
 };
@@ -98,15 +116,6 @@ export const Providers = ({ children }: Props) => {
 // 1️⃣ Singleton prinsip
 // App boyunca 1 ədəd QueryClient
 
-
-
-
-
-
-
-
-
-
 // ❌ PROBLEM (dəqiq)
 
 // Sənin flow belə idi:
@@ -116,9 +125,6 @@ export const Providers = ({ children }: Props) => {
 // Admin login → token dəyişir ✔
 // Amma UI hələ də doctor kimi qalır ❌
 // Yalnız refresh → düzəlir ✔
-
-
-
 
 // 🔥 KÖK SƏBƏB
 
@@ -131,11 +137,6 @@ export const Providers = ({ children }: Props) => {
 // React state deyil ❌
 // React bunu izləmir ❌
 
-
-
-
-
-
 // ❗ Nəticə
 // Hadisə	React görür?
 // token dəyişdi	❌
@@ -143,11 +144,6 @@ export const Providers = ({ children }: Props) => {
 // state dəyişdi	✔
 
 // ➡️ səndə state yox idi → UI dəyişmirdi
-
-
-
-
-
 
 // ❗ “Page dəyişir, niyə dəyişmir?” sualının cavabı
 
@@ -169,13 +165,6 @@ export const Providers = ({ children }: Props) => {
 // Page → mount olur ✔
 // Routes → dəyişir ✔
 
-
-
-
-
-
-
-
 // ❌ Amma
 // <AuthContext.Provider>
 
@@ -185,17 +174,10 @@ export const Providers = ({ children }: Props) => {
 // dəyişmir
 // mount olmur
 
-
-
-
-
 // 🔥 Əsas prinsip
 
 // 👉 React yalnız dəyişən hissəni render edir
 // 👉 parent dəyişmirsə → ona toxunmur
-
-
-
 
 // ❗ Ona görə
 // Hadisə	Provider
@@ -203,13 +185,8 @@ export const Providers = ({ children }: Props) => {
 // login	❌ dəyişmir
 // refresh	✔ yenidən qurulur
 
-
-
 // ✔️ Niyə refresh işləyirdi?
 // F5 → bütün app restart olunur
-
-
-
 
 // ➡️:
 
@@ -217,38 +194,29 @@ export const Providers = ({ children }: Props) => {
 // token oxunur ✔
 // role yenidən hesablanır ✔
 
-
-
 // ✔️ HƏLL (nəyi dəyişdik)
 // 1. role-u state etdik
 // const [role, setRole] = useState(null);
 
-
 // 2. Context-ə setter əlavə etdik
 // { role, setRole }
-
 
 // 3. Login-də update etdik
 // setRole(decodedRole);
 
-
 // 4. Logout-da sıfırladıq
 // setRole(null);
-
 
 // 5. App açılarkən oxuduq
 // useEffect(() => {
 //   setRole(getRoleFromToken());
 // }, []);
 
-
-
 // 🔥 NƏ DƏYİŞDİ
 // Əvvəl	                      İndi
 // token dəyişir → UI dəyişmir	token dəyişir → UI dərhal dəyişir ✔
 // refresh lazım idi	          refresh lazım deyil ✔
 // role static idi	            role reactive oldu ✔
-
 
 // 🔥 ƏN VACİB ANLAYIŞ (mount məsələsi)
 
@@ -273,13 +241,6 @@ export const Providers = ({ children }: Props) => {
 // ✔️ FINAL FLOW (indi düzgün)
 // login → token dəyişdi → setRole() → Provider update → UI rerender ✔
 
-
-
-
-
-
-
-
 // 🔥 ƏSAS FƏRQ (ən vacib hissə)
 // ✔️ 1. Login zamanı setRole — dərhal update
 // setRole(decodedRole);
@@ -293,8 +254,6 @@ export const Providers = ({ children }: Props) => {
 // ➡️ ona görə:
 
 // 👉 React-ə məcburi deyirik: “state dəyişdi”
-
-
 
 // ✔️ 2. App başlayanda setRole — bərpa (recovery)
 // useEffect(() => {
@@ -315,16 +274,9 @@ export const Providers = ({ children }: Props) => {
 // Login-də	UI dərhal dəyişsin
 // App start-da	refresh-dən sonra bərpa olunsun
 
-
-
-
-
 // Qısa və sərt:
 
 // 👉 Refresh = səhifə yenidən yüklənir → bütün JavaScript yenidən başlayır → state sıfırlanır.
-
-
-
 
 // 🔥 Əsas səbəb
 
@@ -334,33 +286,22 @@ export const Providers = ({ children }: Props) => {
 
 // 👉 yalnız yaddaşda (RAM-da) saxlanır
 
-
-
-
-
 // 🔍 Refresh zamanı nə baş verir
 // 1. Browser edir:
 // window.location.reload()
-
 
 // 2. Nəticə:
 // bütün JS prosesi dayanır ❌
 // bütün dəyişənlər silinir ❌
 // React app sıfırdan başlayır ❌
 
-
 // 3. Sənin state
 // const [role, setRole] = useState(null);
-
-
 
 // ➡️ yenidən:
 
 // role = null
 // ❗ Niyə belə dizayn edilib?
-
-
-
 
 // Çünki:
 
@@ -369,8 +310,6 @@ export const Providers = ({ children }: Props) => {
 // təmiz start verir
 // əvvəlki JS yaddaşı saxlamır
 
-
-
 // 🔥 Amma localStorage niyə qalır?
 // localStorage
 
@@ -378,7 +317,6 @@ export const Providers = ({ children }: Props) => {
 
 // diskdə saxlanır ✔
 // browser tərəfindən qorunur ✔
-
 
 // ✔️ Müqayisə
 // Data	          Harada	    Refresh sonrası
@@ -394,16 +332,12 @@ export const Providers = ({ children }: Props) => {
 // RAM silinir ❌
 // SSD qalır ✔
 
-
-
 // ✔️ Ona görə biz nə edirik
 // useEffect(() => {
 //   setRole(decodeRole());
 // }, []);
 
 // ➡️ diskdən RAM-a yenidən yazırıq
-
-
 
 // ✔️ Nəticə
 
@@ -412,21 +346,13 @@ export const Providers = ({ children }: Props) => {
 // JS prosesi yenidən başlayır
 // RAM təmizlənir
 
-
 // 🔥 Qızıl qayda
 // State = temporary
 // Storage = persistent
 
-
 //buna uygun bir numune kod yaz.
 
 //ve ram ve ssd istifadeesi render mount mesleeni tam basa dus
-
-
-
-
-
-
 
 // Qısa və dəqiq:
 
@@ -445,12 +371,6 @@ export const Providers = ({ children }: Props) => {
 
 // 👉 buna deyirik: React tree
 
-
-
-
-
-
-
 // 🔥 Niyə “tree” deyilir?
 
 // Çünki:
@@ -460,13 +380,6 @@ export const Providers = ({ children }: Props) => {
 // onların da child-ları var
 
 // ➡️ tam ağac kimidir 🌳
-
-
-
-
-
-
-
 
 // ✔️ Sənin project-də real misal
 // <Providers>          // root
@@ -482,12 +395,6 @@ export const Providers = ({ children }: Props) => {
 //            └── DepartmentsPage
 //                 └── DepartmentsTable
 
-
-
-
-
-
-
 // ❗ Sənin bug bununla bağlı idi
 
 // 👉 sən düşünürdün:
@@ -500,9 +407,6 @@ export const Providers = ({ children }: Props) => {
 //    ↓ dəyişmir ❌
 // Page (aşağı)
 //    ↓ dəyişir ✔
-
-
-
 
 // 🔥 Əsas məntiq
 
@@ -519,16 +423,10 @@ export const Providers = ({ children }: Props) => {
 
 // Providers ❌
 
-
-
 // ✔️ Ona görə role dəyişmirdi
 // role → Providers içində idi
 // Providers → dəyişmirdi
 // UI → köhnə qalırdı
-
-
-
-
 
 // ✔️ Nəticə
 
@@ -538,10 +436,6 @@ export const Providers = ({ children }: Props) => {
 
 // yuxarı dəyişməzsə → aşağı dəyişə bilər
 // aşağı dəyişsə → yuxarı dəyişmir
-
-
-
-
 
 // ✔️ QAYDA 1
 
@@ -554,7 +448,6 @@ export const Providers = ({ children }: Props) => {
 // ✔️ QAYDA 3
 
 // 👉 Provider yuxarıdadırsa, route change onu dəyişmir
-
 
 //burdaki qaydalarin duzgunluyu yoxlaa.
 

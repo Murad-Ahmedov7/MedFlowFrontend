@@ -82,6 +82,49 @@
 
 
   },
+
+"settings": {
+  "title": "Tənzimləmələr",
+  "description": "Hesab və təhlükəsizlik ayarlarınızı idarə edin",
+
+  "profile": {
+    "title": "Profil Məlumatları",
+    "subtitle": "Şəxsi məlumatlar",
+
+    "fields": {
+      "email": "E-poçt",
+      "role": "Rol"
+    }
+  },
+
+  "password": {
+    "title": "Şifrəni Dəyiş",
+    "subtitle": "Şifrənizi yeniləyin",
+
+    "fields": {
+      "currentPassword": "Cari Şifrə",
+      "newPassword": "Yeni Şifrə",
+      "confirmPassword": "Yeni Şifrəni Təsdiqlə"
+    },
+
+    "actions": {
+      "submit": "Şifrəni Dəyiş"
+    },
+
+    "validation": {
+      "currentPasswordRequired": "Cari şifrə tələb olunur",
+      "newPasswordRequired": "Yeni şifrə tələb olunur",
+      "confirmPasswordRequired": "Şifrə təsdiqi tələb olunur",
+      "passwordMismatch": "Şifrələr uyğun gəlmir",
+      "minLength": "Minimum 8 simvol",
+      "samePassword": "Yeni şifrə cari şifrə ilə eyni ola bilməz"
+    }
+  },
+
+  "account": {
+    "title": "Hesab Məlumatları"
+  }
+},
   "common": {
     "delete": "Sil",
     "edit": "Düzəliş et",
@@ -90,7 +133,8 @@
     "cancel": "Ləğv et",
     "update": "Yenilə",
     "updating": "Yenilənir...",
-      "export": "Eksport et"
+    "export": "Eksport et",
+    "logout": "Çıxış et"
   },
   "pagination": {
     "previous": "Əvvəlki",
