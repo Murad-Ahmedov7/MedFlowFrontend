@@ -14,7 +14,12 @@
     "name": "Şöbə adı",
     "namePlaceholder": "Şöbə adını daxil edin",
     "id": "ID",
-    "empty": "Heç bir şöbə mövcud deyil"
+    "empty": "Heç bir şöbə mövcud deyil",
+    "sort": {
+      "default": "Sırala",
+      "nameAsc": "Ad: A-Z",
+      "nameDesc": "Ad: Z-A"
+    }
   },
   "patients": {
     "title": "Pasiyentlər",
@@ -34,9 +39,6 @@
       "allergies": "Allergiyalar"
     },
 
-
-
-
     "validation": {
       "firstNameRequired": "Ad tələb olunur",
 
@@ -55,7 +57,7 @@
 
       "bloodGroupRequired": "Qan qrupu tələb olunur"
     },
-    
+
     "placeholders": {
       "firstName": "Ad daxil edin",
       "lastName": "Soyad daxil edin",
@@ -74,57 +76,50 @@
       "male": "Kişi",
       "female": "Qadın"
     }
-
-
-
-
-
-
-
   },
 
-"settings": {
-  "title": "Tənzimləmələr",
-  "description": "Hesab və təhlükəsizlik ayarlarınızı idarə edin",
+  "settings": {
+    "title": "Tənzimləmələr",
+    "description": "Hesab və təhlükəsizlik ayarlarınızı idarə edin",
 
-  "profile": {
-    "title": "Profil Məlumatları",
-    "subtitle": "Şəxsi məlumatlar",
+    "profile": {
+      "title": "Profil Məlumatları",
+      "subtitle": "Şəxsi məlumatlar",
 
-    "fields": {
-      "email": "E-poçt",
-      "role": "Rol"
-    }
-  },
-
-  "password": {
-    "title": "Şifrəni Dəyiş",
-    "subtitle": "Şifrənizi yeniləyin",
-
-    "fields": {
-      "currentPassword": "Cari Şifrə",
-      "newPassword": "Yeni Şifrə",
-      "confirmPassword": "Yeni Şifrəni Təsdiqlə"
+      "fields": {
+        "email": "E-poçt",
+        "role": "Rol"
+      }
     },
 
-    "actions": {
-      "submit": "Şifrəni Dəyiş"
+    "password": {
+      "title": "Şifrəni Dəyiş",
+      "subtitle": "Şifrənizi yeniləyin",
+
+      "fields": {
+        "currentPassword": "Cari Şifrə",
+        "newPassword": "Yeni Şifrə",
+        "confirmPassword": "Yeni Şifrəni Təsdiqlə"
+      },
+
+      "actions": {
+        "submit": "Şifrəni Dəyiş"
+      },
+
+      "validation": {
+        "currentPasswordRequired": "Cari şifrə tələb olunur",
+        "newPasswordRequired": "Yeni şifrə tələb olunur",
+        "confirmPasswordRequired": "Şifrə təsdiqi tələb olunur",
+        "passwordMismatch": "Şifrələr uyğun gəlmir",
+        "minLength": "Minimum 8 simvol",
+        "samePassword": "Yeni şifrə cari şifrə ilə eyni ola bilməz"
+      }
     },
 
-    "validation": {
-      "currentPasswordRequired": "Cari şifrə tələb olunur",
-      "newPasswordRequired": "Yeni şifrə tələb olunur",
-      "confirmPasswordRequired": "Şifrə təsdiqi tələb olunur",
-      "passwordMismatch": "Şifrələr uyğun gəlmir",
-      "minLength": "Minimum 8 simvol",
-      "samePassword": "Yeni şifrə cari şifrə ilə eyni ola bilməz"
+    "account": {
+      "title": "Hesab Məlumatları"
     }
   },
-
-  "account": {
-    "title": "Hesab Məlumatları"
-  }
-},
   "common": {
     "delete": "Sil",
     "edit": "Düzəliş et",

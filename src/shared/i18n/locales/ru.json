@@ -14,7 +14,13 @@
     "name": "Название отдела",
     "namePlaceholder": "Введите название отдела",
     "id": "ID",
-    "empty": "Нет доступных отделов"
+    "empty": "Нет доступных отделов",
+
+    "sort": {
+      "default": "Сортировка",
+      "nameAsc": "Название: A-Z",
+      "nameDesc": "Название: Z-A"
+    }
   },
   "patients": {
     "title": "Пациенты",
@@ -72,47 +78,47 @@
   },
 
   "settings": {
-  "title": "Настройки",
-  "description": "Управляйте аккаунтом и настройками безопасности",
+    "title": "Настройки",
+    "description": "Управляйте аккаунтом и настройками безопасности",
 
-  "profile": {
-    "title": "Информация профиля",
-    "subtitle": "Личная информация",
+    "profile": {
+      "title": "Информация профиля",
+      "subtitle": "Личная информация",
 
-    "fields": {
-      "email": "Электронная почта",
-      "role": "Роль"
+      "fields": {
+        "email": "Электронная почта",
+        "role": "Роль"
+      }
+    },
+
+    "password": {
+      "title": "Изменить пароль",
+      "subtitle": "Обновите ваш пароль",
+
+      "fields": {
+        "currentPassword": "Текущий пароль",
+        "newPassword": "Новый пароль",
+        "confirmPassword": "Подтвердите новый пароль"
+      },
+
+      "actions": {
+        "submit": "Изменить пароль"
+      },
+
+      "validation": {
+        "currentPasswordRequired": "Текущий пароль обязателен",
+        "newPasswordRequired": "Новый пароль обязателен",
+        "confirmPasswordRequired": "Подтвердите пароль",
+        "passwordMismatch": "Пароли не совпадают",
+        "minLength": "Минимум 8 символов",
+        "samePassword": "Новый пароль не может совпадать с текущим"
+      }
+    },
+
+    "account": {
+      "title": "Информация аккаунта"
     }
   },
-
-"password": {
-  "title": "Изменить пароль",
-  "subtitle": "Обновите ваш пароль",
-
-  "fields": {
-    "currentPassword": "Текущий пароль",
-    "newPassword": "Новый пароль",
-    "confirmPassword": "Подтвердите новый пароль"
-  },
-
-  "actions": {
-    "submit": "Изменить пароль"
-  },
-
-  "validation": {
-    "currentPasswordRequired": "Текущий пароль обязателен",
-    "newPasswordRequired": "Новый пароль обязателен",
-    "confirmPasswordRequired": "Подтвердите пароль",
-    "passwordMismatch": "Пароли не совпадают",
-    "minLength": "Минимум 8 символов",
-    "samePassword": "Новый пароль не может совпадать с текущим"
-  }
-},
-
-  "account": {
-    "title": "Информация аккаунта"
-  }
-},
 
   "common": {
     "delete": "Удалить",
@@ -122,8 +128,8 @@
     "cancel": "Отмена",
     "update": "Обновить",
     "updating": "Обновление...",
-     "export": "Экспорт",
-     "logout": "Выйти"
+    "export": "Экспорт",
+    "logout": "Выйти"
   },
   "pagination": {
     "previous": "Предыдущая",

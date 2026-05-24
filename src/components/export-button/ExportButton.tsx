@@ -39,20 +39,5 @@ export const ExportButton = <T,>({
 };
 
 
-//app.tsxde olan commitleri sil
 
 
-////////////////////////////////logout-u da tercume etdim onu da yaz commmite 
-
-//settings yazdiq yeni passwrod ile profile hissesi
-
-//auth contextde email de elave olundu.
-
-
-
-
-// Admin reset sistemi olsun yeni o her hansi bir userin parolu deyise bilsin.
-
-//lazim olan yerlere role elave et mes router.tsx ve s . lazim deyilse de authorize basligi kimi bir sey et.
-
-//alert true ve alert error ve s mesajlari mutleq tercume et (ve ya ingilis dilinde ele hamisin. fullstack duzelt .)

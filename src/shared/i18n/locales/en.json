@@ -6,16 +6,22 @@
   "menu": {
     "title": "MENU"
   },
-  "departments": {
-    "title": "Departments",
-    "add": "Add Department",
-    "edit": "Edit Department",
-    "updated": "\"{{name}}\" department updated successfully.",
-    "name": "Department Name",
-    "namePlaceholder": "Enter department name",
-    "id": "ID",
-    "empty": "No departments available"
-  },
+"departments": {
+  "title": "Departments",
+  "add": "Add Department",
+  "edit": "Edit Department",
+  "updated": "\"{{name}}\" department updated successfully.",
+  "name": "Department Name",
+  "namePlaceholder": "Enter department name",
+  "id": "ID",
+  "empty": "No departments available",
+
+  "sort": {
+    "default": "Sort",
+    "nameAsc": "Name: A-Z",
+    "nameDesc": "Name: Z-A"
+  }
+},
 
   "patients": {
     "title": "Patients",
